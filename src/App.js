@@ -1,10 +1,15 @@
 import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
+import NavBar from './components/layout/NavBar';
 
 class App extends React.Component{
   render(){
-    return(<h1>
-      yeet
-    </h1>);
+    return(
+      <BrowserRouter>
+        <NavBar />
+        <h1>yeet</h1>
+      </BrowserRouter>
+    );
   }
 }
 
