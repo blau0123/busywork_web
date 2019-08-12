@@ -37,7 +37,7 @@ const NavBar = () => {
 
     return(
         <div className="root" style={root_styles}>
-            <AppBar style={{background: "#6E88C1"}}>
+            <AppBar position='static' style={{background: "#6E88C1"}}>
                 <Toolbar className="container">
                     <Link className="title" to="/" className="logo" style={title_styles}>
                         <h2>BusyWork</h2>
