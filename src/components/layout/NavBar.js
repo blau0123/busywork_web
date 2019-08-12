@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-
+/*
 const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
@@ -19,15 +19,29 @@ const useStyles = makeStyles(() => ({
         color: 'white',
     },
 }));
+*/
+
+const root_styles = {
+    flexGrow: 1,
+}
+
+const title_styles = {
+    flexGrow: 1,
+    textDecoration: 'none',
+    color: 'white',
+    size: '24px',
+}
 
 const NavBar = () => {
-    const classes = useStyles();
+    //const classes = useStyles();
 
     return(
-        <div className={classes.root}>
-            <AppBar background="#6E88C1">
+        <div className="root" style={root_styles}>
+            <AppBar style={{background: "#6E88C1"}}>
                 <Toolbar className="container">
-                    <Link className={classes.title} to="/" className="logo">BusyWork</Link>
+                    <Link className="title" to="/" className="logo" style={title_styles}>
+                        <h2>BusyWork</h2>
+                    </Link>
                     <SignedInLinks />
                     <SignedOutLinks />
                 </Toolbar>

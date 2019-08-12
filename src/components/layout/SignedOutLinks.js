@@ -17,10 +17,10 @@ const SignedOutLinks = () => {
         // list of links user can go to when signed in (notes, todos, calendar, log out)
         <ul style={list_styles}>
             <li>
-                <Button className="nav-button" color="inherit">
-                    <NavLink to="/" style={list_item_styles}>Sign Up</NavLink>
+                <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
+                    <NavLink to="/" style={list_item_styles}>Sign up</NavLink>
                 </Button>
-                <Button className="nav-button" color="inherit">
+                <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
                     <NavLink to="/" style={list_item_styles}>Log in</NavLink>
                 </Button>
             </li>
