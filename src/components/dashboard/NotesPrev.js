@@ -1,19 +1,29 @@
 import React from 'react';
 import NoteSummary from '../notes/NoteSummary';
-import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
-/*
-<List aria-label="previews">
+/* pulls in data from firebase and passes data of each notes item
+as props into each notesummary so the notesummary component can render
+each individual note given the props
+*/
+class NotesPrev extends React.Component{
+    render(){
+        return(
+            <List aria-label="previews">
+                <ListItem button>
+                    <NoteSummary />
+                </ListItem>
+                <ListItem button>
+                    <NoteSummary />
+                </ListItem>
+                <ListItem button>
+                    <NoteSummary />
+                </ListItem>
                 <ListItem button>
                     <NoteSummary />
                 </ListItem>
             </List>
-*/
-
-class NotesPrev extends React.Component{
-    render(){
-        return(
-            <Paper>yeet</Paper>
         );
     }
 }
