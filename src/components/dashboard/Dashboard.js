@@ -7,8 +7,9 @@ import NotesPrev from './NotesPrev';
 import TodosPrev from './TodosPrev';
 import EventsPrev from './EventsPrev';
 
-const grid_item_styles = {
-    flex: 1,
+const grid_items_styles = {
+    background: '#F9F9F9',
+    height: '100%',
 }
 
 class Dashboard extends React.Component{
@@ -17,8 +18,8 @@ class Dashboard extends React.Component{
             <div className="root" style={{margin: '25px'}}>
                 <Grid container justify='flex-start' direction='row' spacing={3} 
                 alignItems='stretch' wrap='wrap'>
-                    <Grid item xs={7} style={{margin: '10px'}}>
-                        <Card style={{background:'#F9F9F9'}}>
+                    <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
+                        <Card style={grid_items_styles}>
                             <CardContent>
                                 <h3 style={{textAlign:'center'}}>Notes</h3>
                                 <NotesPrev />
@@ -26,16 +27,16 @@ class Dashboard extends React.Component{
                         </Card>
                     </Grid>
                     <Grid container item direction='row' xs={5} spacing={3} justify='flex-end'>
-                        <Grid item xs={12} style={{margin: '10px'}}>
-                            <Card style={{background:'#F9F9F9'}}>
+                        <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
+                            <Card style={grid_items_styles}>
                                 <CardContent>
                                     <h3 style={{textAlign:'center'}}>Todos</h3>
                                     <TodosPrev />
                                 </CardContent>
                             </Card>
                         </Grid>
-                        <Grid item xs={12} style={{margin: '10px'}}>
-                            <Card style={{background:'#F9F9F9'}}>
+                        <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
+                            <Card style={grid_items_styles}>
                                 <CardContent>
                                     <h3 style={{textAlign:'center'}}>Events</h3>
                                     <EventsPrev />

@@ -17,12 +17,6 @@ class NotesPrev extends React.Component{
                 <ListItem button>
                     <NoteSummary />
                 </ListItem>
-                <ListItem button>
-                    <NoteSummary />
-                </ListItem>
-                <ListItem button>
-                    <NoteSummary />
-                </ListItem>
             </List>
         );
     }
