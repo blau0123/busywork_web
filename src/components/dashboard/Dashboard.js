@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import NotesPrev from './NotesPrev';
 import TodosPrev from './TodosPrev';
 import EventsPrev from './EventsPrev';
+import GridNoteTitle from './GridNoteTitle';
+import GridTodoTitle from './GridTodoTitle';
 
 // styles for each grid item (notes, todos, events)
 const grid_items_styles = {
@@ -38,7 +40,7 @@ class Dashboard extends React.Component{
                     <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
                         <Card style={grid_items_styles}>
                             <CardContent>
-                                <Link to='/notes' style={title_styles}>Notes</Link>
+                                <GridNoteTitle />
                                 <NotesPrev />
                             </CardContent>
                         </Card>
@@ -49,7 +51,7 @@ class Dashboard extends React.Component{
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
                             <Card style={grid_items_styles}>
                                 <CardContent>
-                                    <Link to='/todos' style={title_styles}>Todos</Link>
+                                    <GridTodoTitle />
                                     <TodosPrev />
                                 </CardContent>
                             </Card>
