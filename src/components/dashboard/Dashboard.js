@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,6 +14,14 @@ const grid_items_styles = {
     height: '100%',
 }
 
+const title_styles = {
+    flexGrow: 1,
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '24px',
+    paddingLeft: '25px',
+}
+
 class Dashboard extends React.Component{
     render(){
         return(
@@ -21,7 +31,7 @@ class Dashboard extends React.Component{
                     <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
                         <Card style={grid_items_styles}>
                             <CardContent>
-                                <h3 style={{textAlign:'center'}}>Notes</h3>
+                                <Link to='/' style={title_styles}>Notes</Link>
                                 <NotesPrev />
                             </CardContent>
                         </Card>
@@ -30,7 +40,7 @@ class Dashboard extends React.Component{
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
                             <Card style={grid_items_styles}>
                                 <CardContent>
-                                    <h3 style={{textAlign:'center'}}>Todos</h3>
+                                    <Link to='/' style={title_styles}>Todos</Link>
                                     <TodosPrev />
                                 </CardContent>
                             </Card>
@@ -38,7 +48,7 @@ class Dashboard extends React.Component{
                         <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
                             <Card style={grid_items_styles}>
                                 <CardContent>
-                                    <h3 style={{textAlign:'center'}}>Events</h3>
+                                    <Link to='/' style={title_styles}>Events</Link>
                                     <EventsPrev />
                                 </CardContent>
                             </Card>
