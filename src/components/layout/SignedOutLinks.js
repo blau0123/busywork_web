@@ -18,10 +18,10 @@ const SignedOutLinks = () => {
         <ul style={list_styles}>
             <li>
                 <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
-                    <NavLink to="/" style={list_item_styles}>Sign up</NavLink>
+                    <NavLink to="/signup" style={list_item_styles}>Sign up</NavLink>
                 </Button>
                 <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
-                    <NavLink to="/" style={list_item_styles}>Log in</NavLink>
+                    <NavLink to="/signin" style={list_item_styles}>Log in</NavLink>
                 </Button>
             </li>
         </ul>

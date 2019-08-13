@@ -18,7 +18,7 @@ const signin_btn_styles = {
 Component that allows user to sign in with username and password
 stored in firebase firestore database
 */
-class SignIn extends React.Component{
+class SignUp extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -30,7 +30,7 @@ class SignIn extends React.Component{
     // handles when there's a change in the input text
     handleChange = (evt) => {
         this.setState({
-            //target.id gives either email or pw
+            //change the value of id of email/pw to new value
             [evt.target.id]: evt.target.value
         })
     }
@@ -48,7 +48,7 @@ class SignIn extends React.Component{
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <div style={{padding: '40px'}} className="signin-container">
-                                <h3>Sign In</h3>
+                                <h3>Sign up</h3>
                                 <form onSubmit={{}} className="form-container">
                                     <FormControl fullWidth>
                                         <TextField id='email'
@@ -62,7 +62,7 @@ class SignIn extends React.Component{
                                         <Button variant='contained' className="submit-btn"
                                             onClick={this.handleSubmit}
                                             style={signin_btn_styles}>
-                                            Login
+                                            Sign up!
                                         </Button>
                                     </FormControl>
                                 </form>
@@ -75,4 +75,4 @@ class SignIn extends React.Component{
     }
 }
 
-export default SignIn;
+export default SignUp;

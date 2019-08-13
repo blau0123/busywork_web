@@ -38,7 +38,7 @@ class Dashboard extends React.Component{
                     <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
                         <Card style={grid_items_styles}>
                             <CardContent>
-                                <Link to='/' style={title_styles}>Notes</Link>
+                                <Link to='/notes' style={title_styles}>Notes</Link>
                                 <NotesPrev />
                             </CardContent>
                         </Card>
@@ -49,7 +49,7 @@ class Dashboard extends React.Component{
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
                             <Card style={grid_items_styles}>
                                 <CardContent>
-                                    <Link to='/' style={title_styles}>Todos</Link>
+                                    <Link to='/todos' style={title_styles}>Todos</Link>
                                     <TodosPrev />
                                 </CardContent>
                             </Card>
@@ -58,7 +58,7 @@ class Dashboard extends React.Component{
                         <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
                             <Card style={grid_items_styles}>
                                 <CardContent>
-                                    <Link to='/' style={title_styles}>Events</Link>
+                                    <Link to='/calendar' style={title_styles}>Events</Link>
                                     <EventsPrev />
                                 </CardContent>
                             </Card>
