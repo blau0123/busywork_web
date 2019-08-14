@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import {makeStyles} from '@material-ui/core/styles'
+//import {makeStyles} from '@material-ui/core/styles'
 
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
@@ -39,7 +39,7 @@ const NavBar = () => {
         <div className="root" style={root_styles}>
             <AppBar position='static' style={{background: "#6E88C1"}}>
                 <Toolbar className="container">
-                    <Link className="title" to="/" className="logo" style={title_styles}>
+                    <Link className="title" to="/" style={title_styles}>
                         <h2>BusyWork</h2>
                     </Link>
                     <SignedInLinks />
