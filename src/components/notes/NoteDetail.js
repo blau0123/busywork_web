@@ -5,14 +5,15 @@ import CardContent from '@material-ui/core/CardContent';
 
 // props is obtained from Route routing to this 'page'
 const NoteDetail = (props) => {
-    const id = props.match.params.id;
+    const thisNote = props.location.state.note;
+    console.log(thisNote);
     return(
-        <div className="container">
-            <Card style={{background:'#F9F9F9'}}>
+        <div className="container" style={{margin: '25px'}}>
+            <Card style={{background:'#F9F9F9', padding: '10px'}}>
                 <CardContent>
                     <div className="note-content">
-                        <h3>note #{id}</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h3>{thisNote.title}</h3>
+                        <p>{thisNote.body}</p>
                     </div>
                 </CardContent>
             </Card>

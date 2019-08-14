@@ -1,6 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+
+const list_item_styles = {
+    textDecoration: 'none',
+    color: 'black',
+}
 
 /*
 Summary of notes that are displayed on the dashboard for easy access,
@@ -10,13 +17,19 @@ const NoteSummary = ({note}) => {
     return(
         <div className="container" style={{width: '100%'}}>
             <Card style={{height: '250px'}}>
-                <CardContent>
-                    {/* holds text in each list item of notes list */}
-                    <div className="note-content">
-                        <h3>{note.title}</h3>
-                        <p>{note.body}</p>
-                    </div>
-                </CardContent>
+                <Link to={{
+                    pathname: '/notes/'+note.id,
+                    state: {
+                        note: note
+                    }}} style={list_item_styles}>
+                    <CardContent>
+                        {/* holds text in each list item of notes list */}
+                        <div className="note-content">
+                            <h3>{note.title}</h3>
+                            <p>{note.body}</p>
+                        </div>
+                    </CardContent>
+                </Link>
             </Card>
         </div>
     )
