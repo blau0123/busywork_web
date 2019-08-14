@@ -16,6 +16,8 @@ class TodoSummary extends React.Component{
         return(
             <div className='container' style={{width: '100%'}}>
                 <Card>
+                    {/* add link outside of cardcontent so whenever the content of
+                    the card is clicked, redirected to given pathname */}
                     <CardContent>
                         {/* holds text in each list item of todo list */}
                         <div className='todo-content'>
