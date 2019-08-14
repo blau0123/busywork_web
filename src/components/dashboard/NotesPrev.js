@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NoteSummary from '../notes/NoteSummary';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,6 +10,23 @@ each individual note given the props
 
 Inside of dashboard, shows list of summaries of important notes
 */
+const NotesPrev = ({noteList}) => {
+    return(
+        <List className="list-container" aria-label="previews">
+            {
+                noteList && noteList.map(note => {
+                return(
+                    <ListItem button key={note.id}>
+                        {/* passing in each individual note to render that specific note as a
+                        NoteSummary component */}
+                        <NoteSummary note={note} key={note.id} />
+                    </ListItem>
+                )
+            })}
+        </List>
+    )
+}
+/*
 class NotesPrev extends React.Component{
     render(){
         return(
@@ -23,5 +41,5 @@ class NotesPrev extends React.Component{
         );
     }
 }
-
+*/
 export default NotesPrev;

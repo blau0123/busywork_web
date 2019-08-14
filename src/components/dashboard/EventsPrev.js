@@ -11,20 +11,17 @@ Inside of dashboard, shows list of summaries of upcoming events
 */
 class EventsPrev extends React.Component{
     render(){
+        const eventList = this.props.eventList;
+
         return(
             <List aria-label="previews">
-                <ListItem button>
-                    <EventSummary />
-                </ListItem>
-                <ListItem button>
-                    <EventSummary />
-                </ListItem>
-                <ListItem button>
-                    <EventSummary />
-                </ListItem>
-                <ListItem button>
-                    <EventSummary />
-                </ListItem>
+                {eventList && eventList.map(event => {
+                    return(
+                        <ListItem button key={event.id}>
+                            <EventSummary event={event}/>
+                        </ListItem>
+                    )
+                })}
             </List>
         );
     }

@@ -12,6 +12,7 @@ Shows summary of most important todos on the dashboard
 */
 class TodoSummary extends React.Component{
     render(){
+        const todo = this.props.todo;
         return(
             <div className='container' style={{width: '100%'}}>
                 <Card>
@@ -22,7 +23,7 @@ class TodoSummary extends React.Component{
                                 <FormGroup>
                                     <FormControlLabel
                                     control = {<Checkbox checked={false} value='todo'/>}
-                                    label='a todo' />
+                                    label={todo.task} />
                                 </FormGroup>
                             </FormControl>
                         </div>

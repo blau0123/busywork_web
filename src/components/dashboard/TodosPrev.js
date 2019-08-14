@@ -11,14 +11,16 @@ Inside of dashboard, shows list of summaries of important todos
 */
 class TodosPrev extends React.Component{
     render(){
+        const todoList = this.props.todoList;
         return(
             <List aria-label="previews">
-                <ListItem button>
-                    <TodoSummary />
-                </ListItem>
-                <ListItem button>
-                    <TodoSummary />
-                </ListItem>
+                { todoList && todoList.map(todo => {
+                    return(
+                        <ListItem button key={todo.id}>
+                            <TodoSummary key={todo.id} todo={todo}/>
+                        </ListItem>
+                    )
+                })}
             </List>
         );
     }

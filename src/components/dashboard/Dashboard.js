@@ -33,7 +33,7 @@ and upcoming events so that the user can quickly get a feel for his/her upcoming
 */
 class Dashboard extends React.Component{
     render(){
-        console.log(this.props);
+        console.log(this.props)
         return(
             <div className="root" style={{margin: '25px'}}>
                 <Grid container justify='flex-start' direction='row' spacing={3} 
@@ -43,7 +43,7 @@ class Dashboard extends React.Component{
                         <Card style={grid_items_styles}>
                             <CardContent>
                                 <GridNoteTitle />
-                                <NotesPrev />
+                                <NotesPrev noteList={this.props.noteList} />
                             </CardContent>
                         </Card>
                     </Grid>
@@ -54,7 +54,7 @@ class Dashboard extends React.Component{
                             <Card style={grid_items_styles}>
                                 <CardContent>
                                     <GridTodoTitle />
-                                    <TodosPrev />
+                                    <TodosPrev todoList={this.props.todoList}/>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -63,7 +63,7 @@ class Dashboard extends React.Component{
                             <Card style={grid_items_styles}>
                                 <CardContent>
                                     <Link to='/calendar' style={title_styles}>Events</Link>
-                                    <EventsPrev />
+                                    <EventsPrev eventList={this.props.eventList}/>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -78,6 +78,8 @@ class Dashboard extends React.Component{
 const mapStateToProps = (storeState) => {
     return({
         noteList: storeState.notes.noteList,
+        todoList: storeState.todos.todoList,
+        eventList: storeState.events.eventList,
     });
 }
 
