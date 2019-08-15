@@ -12,6 +12,11 @@ const list_item_styles = {
     "color": "white"
 }
 
+/*
+Links shown to the user when he/she is signed out
+These links are sign up or log in (both of which takes you to a form 
+component to do either)
+*/
 const SignedOutLinks = () => {
     return(
         // list of links user can go to when signed in (notes, todos, calendar, log out)

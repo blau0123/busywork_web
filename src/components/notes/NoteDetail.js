@@ -5,6 +5,10 @@ import CardContent from '@material-ui/core/CardContent';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
+/*
+Component that shows the details of a note in TextFields so that
+the user can easily update information in the note
+*/
 class NoteDetail extends React.Component{
     constructor(){
         super();

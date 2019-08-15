@@ -10,7 +10,7 @@ const list_item_styles = {
 }
 
 /*
-Shows summary of upcoming events on the dashboard, which makes
+Shows summary of a specified upcoming events on the dashboard, which makes
 it quicker than traveling to then going through your calendar
 */
 class EventSummary extends React.Component{

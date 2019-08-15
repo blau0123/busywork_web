@@ -32,6 +32,10 @@ const title_styles = {
     size: '24px',
 }
 
+/*
+Component that handles the navigation bar at the top, holding the
+'home' button and the links to sign in/sign out/sign up
+*/
 const NavBar = () => {
     //const classes = useStyles();
 

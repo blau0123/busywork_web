@@ -12,6 +12,10 @@ const title_styles = {
     paddingLeft: '25px',
 }
 
+/*
+Component for the title of the todo list in Dashboard that allows a link
+to the todo list when clicked
+*/
 const GridTodoTitle = () => {
     return(
         // aligns the title and the add button along the header of the card

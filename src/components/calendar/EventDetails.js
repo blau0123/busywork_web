@@ -5,6 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
+/*
+Component that shows a specific event's details 
+*/
 class EventDetail extends React.Component{
     render(){
         const thisEvent = this.props.location.state.event;

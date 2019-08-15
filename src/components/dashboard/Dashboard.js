@@ -13,9 +13,16 @@ import GridNoteTitle from './GridNoteTitle';
 import GridTodoTitle from './GridTodoTitle';
 
 // styles for each grid item (notes, todos, events)
-const grid_items_styles = {
+const todo_event_grid_styles = {
     background: '#F9F9F9',
-    height: '100%',
+    height: '50vh',
+    overflow: 'auto',
+}
+
+const note_grid_styles = {
+    background: '#F9F9F9',
+    height: '107vh',
+    overflow: 'auto',
 }
 
 // styles for titles of dashboard items
@@ -40,7 +47,7 @@ class Dashboard extends React.Component{
                 alignItems='stretch' wrap='wrap'>
                     {/* notes grid item */}
                     <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
-                        <Card style={grid_items_styles}>
+                        <Card style={note_grid_styles}>
                             <CardContent>
                                 <GridNoteTitle />
                                 <NotesPrev noteList={this.props.noteList} />
@@ -51,7 +58,7 @@ class Dashboard extends React.Component{
                     <Grid container item direction='row' xs={5} spacing={3} justify='flex-end'>
                         {/* todo grid item */}
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
-                            <Card style={grid_items_styles}>
+                            <Card style={todo_event_grid_styles}>
                                 <CardContent>
                                     <GridTodoTitle />
                                     <TodosPrev todoList={this.props.todoList}/>
@@ -60,7 +67,7 @@ class Dashboard extends React.Component{
                         </Grid>
                         {/* events grid item */}
                         <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
-                            <Card style={grid_items_styles}>
+                            <Card style={todo_event_grid_styles}>
                                 <CardContent>
                                     <Link to='/calendar' style={title_styles}>Events</Link>
                                     <EventsPrev eventList={this.props.eventList}/>
