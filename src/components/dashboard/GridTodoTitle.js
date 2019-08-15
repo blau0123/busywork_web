@@ -9,7 +9,7 @@ const title_styles = {
     textDecoration: 'none',
     color: 'black',
     fontSize: '24px',
-    paddingLeft: '25px',
+    padding: '15px',
 }
 
 /*
@@ -21,7 +21,7 @@ const GridTodoTitle = () => {
         // aligns the title and the add button along the header of the card
         <Grid container item direction='row' xs={12} justify='flex-end'>
             <Link to='/todos' style={title_styles}>Todos</Link>
-            <div style={{marginRight: '25px'}}>
+            <div style={{padding: '15px'}}>
                 <Link to='/addtodo' style={title_styles}>Add</Link>
             </div>
         </Grid>

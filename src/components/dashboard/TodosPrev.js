@@ -13,15 +13,26 @@ class TodosPrev extends React.Component{
     render(){
         const todoList = this.props.todoList;
         return(
-            <List aria-label="previews">
-                { todoList && todoList.map(todo => {
-                    return(
-                        <ListItem button key={todo.id}>
-                            <TodoSummary key={todo.id} todo={todo}/>
-                        </ListItem>
-                    )
-                })}
-            </List>
+            <div>
+                {
+                    /* ternary to determine whether to show the list
+                    or tell the user there are no todos
+                    */
+                    todoList.length > 0 ? 
+                    <List aria-label="previews">
+                    { todoList && todoList.map(todo => {
+                        return(
+                            <ListItem button key={todo.id}>
+                                <TodoSummary key={todo.id} todo={todo}/>
+                            </ListItem>
+                        )
+                    })}
+                    </List> :
+                    <h3 style={{padding: '25px', textAlign:'center'}}>
+                        No todos currently! Keep it up!
+                    </h3>
+                }
+            </div>
         );
     }
 }

@@ -11,19 +11,31 @@ each individual note given the props
 Inside of dashboard, shows list of summaries of important notes
 */
 const NotesPrev = ({noteList}) => {
+    console.log(noteList.length);
     return(
-        <List className="list-container" aria-label="previews">
+        <div>
             {
-                noteList && noteList.map(note => {
-                return(
-                    <ListItem button key={note.id}>
-                        {/* passing in each individual note to render that specific note as a
-                        NoteSummary component */}
-                        <NoteSummary note={note} key={note.id} />
-                    </ListItem>
-                )
-            })}
-        </List>
+                /* ternary to determine whether to show the list
+                or tell the user there are no notes
+                */
+                noteList.length > 0 ? 
+                <List className="list-container" aria-label="previews">
+                {
+                    noteList && noteList.map(note => {
+                    return(
+                        <ListItem button key={note.id}>
+                            {/* passing in each individual note to render that specific note as a
+                            NoteSummary component */}
+                            <NoteSummary note={note} key={note.id} />
+                        </ListItem>
+                    )
+                })}
+                </List> : 
+                <h3 style={{padding: '25px', textAlign:'center'}}>
+                    No notes currently! Get started by clicking on the add button above!
+                </h3>
+            }
+        </div>
     )
 }
 /*

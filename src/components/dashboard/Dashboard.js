@@ -21,7 +21,7 @@ const todo_event_grid_styles = {
 
 const note_grid_styles = {
     background: '#F9F9F9',
-    height: '107vh',
+    height: '120vh',
     overflow: 'auto',
 }
 
@@ -31,7 +31,6 @@ const title_styles = {
     textDecoration: 'none',
     color: 'black',
     fontSize: '24px',
-    paddingLeft: '25px',
 }
 
 /*
@@ -47,9 +46,9 @@ class Dashboard extends React.Component{
                 alignItems='stretch' wrap='wrap'>
                     {/* notes grid item */}
                     <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
+                        <GridNoteTitle />
                         <Card style={note_grid_styles}>
                             <CardContent>
-                                <GridNoteTitle />
                                 <NotesPrev noteList={this.props.noteList} />
                             </CardContent>
                         </Card>
@@ -58,18 +57,20 @@ class Dashboard extends React.Component{
                     <Grid container item direction='row' xs={5} spacing={3} justify='flex-end'>
                         {/* todo grid item */}
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
+                            <GridTodoTitle />
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
-                                    <GridTodoTitle />
                                     <TodosPrev todoList={this.props.todoList}/>
                                 </CardContent>
                             </Card>
                         </Grid>
                         {/* events grid item */}
                         <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
+                            <div style={{padding: '15px'}}>
+                                <Link to='/calendar' style={title_styles}>Events</Link>
+                            </div>
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
-                                    <Link to='/calendar' style={title_styles}>Events</Link>
                                     <EventsPrev eventList={this.props.eventList}/>
                                 </CardContent>
                             </Card>
