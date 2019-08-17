@@ -15,6 +15,7 @@ import AddTodo from './components/todos/AddTodo';
 
 import Calendar from './components/calendar/Calendar';
 import EventDetails from './components/calendar/EventDetails';
+import AddEvent from './components/calendar/AddEvent';
 
 class App extends React.Component{
   render(){
@@ -37,6 +38,7 @@ class App extends React.Component{
 
             <Route path="/calendar" component={Calendar} />
             <Route path="/events/:id" component={EventDetails} />
+            <Route path="/addevent" component={AddEvent} />
           </Switch>
         </div>
       </BrowserRouter>

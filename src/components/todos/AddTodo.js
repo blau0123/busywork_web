@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {addTodo} from '../../redux/store/actions/todoActions';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -39,7 +42,7 @@ class AddTodo extends React.Component{
     // handles when submit btn clicked
     handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(this.state);
+        this.props.addTodo(this.state);
     }
 
     render(){
@@ -73,4 +76,12 @@ class AddTodo extends React.Component{
     }
 }
 
-export default AddTodo;
+// allows this component to access action creators, like addTodo()
+const mapDispatchToProps = (dispatch) => {
+    return{
+        // addTodo is a method that dispatches action creator that makes async call
+        addTodo: (todo) => dispatch(addTodo(todo))
+    }
+}
+
+export default connect(mapDispatchToProps)(AddTodo);

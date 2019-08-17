@@ -11,6 +11,7 @@ import TodosPrev from './TodosPrev';
 import EventsPrev from './EventsPrev';
 import GridNoteTitle from './GridNoteTitle';
 import GridTodoTitle from './GridTodoTitle';
+import GridCalendarTitle from './GridCalendarTitle';
 
 // styles for each grid item (notes, todos, events)
 const todo_event_grid_styles = {
@@ -66,9 +67,7 @@ class Dashboard extends React.Component{
                         </Grid>
                         {/* events grid item */}
                         <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
-                            <div style={{padding: '15px'}}>
-                                <Link to='/calendar' style={title_styles}>Events</Link>
-                            </div>
+                            <GridCalendarTitle />
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
                                     <EventsPrev eventList={this.props.eventList}/>

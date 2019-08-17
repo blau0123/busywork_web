@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {addNote} from '../../redux/store/actions/noteActions';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -40,7 +43,8 @@ class AddNote extends React.Component{
     // handles when submit btn clicked
     handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(this.state);
+        // state holds info for the note wanted to add, so pass it in to action creator
+        this.props.addNote(this.state);
     }
 
     render(){
@@ -81,4 +85,12 @@ class AddNote extends React.Component{
     }
 }
 
-export default AddNote;
+// allows this component to access action creators, like addNote()
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // addNote is a method that dispatches action creator that makes async call
+        addNote: (note) => dispatch(addNote(note))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AddNote);
