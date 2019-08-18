@@ -16,6 +16,11 @@ it quicker than traveling to then going through your calendar
 class EventSummary extends React.Component{
     render(){
         const event = this.props.event;
+
+        // convert timestamp to date objects to format
+        const startDate = new Date(event.startTime.seconds * 1000);
+        const endDate = new Date(event.endTime.seconds * 1000)
+
         return(
             <div className="container" style={{width: '100%'}}>
                 <Card>
@@ -31,7 +36,7 @@ class EventSummary extends React.Component{
                                 <h3>{event.title}</h3>
                                 <p>{event.description}</p>
                                 <p style={{color: 'grey'}}>
-                                    12 August at 9pm
+                                    {startDate.toLocaleString()} - {endDate.toLocaleString()}
                                     <br />
                                     {event.location}
                                 </p>

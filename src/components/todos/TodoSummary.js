@@ -12,6 +12,7 @@ Shows summary of most important todos on the dashboard
 */
 class TodoSummary extends React.Component{
     handleComplete(evt){
+        // TODO
         console.log(evt.target.id);
     }
 

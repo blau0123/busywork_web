@@ -9,6 +9,8 @@ const eventsReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_EVENT':
             console.log('event added');
+        case 'ADD_EVENT_FAIL':
+            console.log('fail to add event');
     }
     return state;
 }

@@ -88,9 +88,11 @@ const mapStateToProps = (storeState) => {
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,
         todoList: storeState.firestore.ordered.todos,
-        eventList: storeState.events.eventList,
+        eventList: storeState.firestore.ordered.events,
     });
 }
 
-export default compose(firestoreConnect([{collection:'notes'}, {collection:'todos'}]), 
+export default compose(firestoreConnect([{collection:'notes'}, 
+                                         {collection:'todos'},
+                                         {collection:'events'}]), 
     connect(mapStateToProps))(Dashboard);

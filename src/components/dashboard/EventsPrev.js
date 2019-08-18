@@ -19,7 +19,7 @@ class EventsPrev extends React.Component{
                     /* ternary to determine whether to show the list
                     or tell the user there are no events
                     */
-                    eventList.length > 0 ?
+                    eventList ?
                     <List aria-label="previews">
                     {eventList && eventList.map(event => {
                         return(

@@ -4,13 +4,25 @@ add event, delete event, etc
 */
 
 export const addEvent = (event) => {
-    return (dispatch, getState) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
         // make async call to db
-        
-        // make dispatch call to reducer after async call done
-        dispatch({
-            type: 'ADD_EVENT',
-            eventToAdd: event,
+        const firestore = getFirestore();
+        firestore.collection('events').add({
+            title: event.title,
+            description: event.description,
+            location: event.location,
+        }).then(() => {
+            // make dispatch call to reducer after async call done
+            dispatch({
+                type: 'ADD_EVENT',
+                eventToAdd: event,
+            })
+        }).catch((err) => {
+            // dispatch fail action if add event fails
+            dispatch({
+                type: 'ADD_EVENT_FAIL',
+                error: err,
+            })
         })
     }
 }
