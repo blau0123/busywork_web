@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -43,9 +45,11 @@ class NotesList extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
+    console.log(storeState);
     return({
-        noteList: storeState.notes.noteList,
+        noteList: storeState.firestore.ordered.notes,
     });
 }
 
-export default connect(mapStateToProps)(NotesList);
+export default compose(firestoreConnect([{collection:'notes'}]),
+    connect(mapStateToProps))(NotesList);

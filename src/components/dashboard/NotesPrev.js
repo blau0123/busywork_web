@@ -11,14 +11,13 @@ each individual note given the props
 Inside of dashboard, shows list of summaries of important notes
 */
 const NotesPrev = ({noteList}) => {
-    console.log(noteList.length);
     return(
         <div>
             {
                 /* ternary to determine whether to show the list
                 or tell the user there are no notes
                 */
-                noteList.length > 0 ? 
+                noteList ? 
                 <List className="list-container" aria-label="previews">
                 {
                     noteList && noteList.map(note => {

@@ -9,6 +9,8 @@ const notesReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_NOTE':
             console.log('added note', action.type);
+        case 'ADD_NOTE_FAIL':
+            console.log('failure adding note', action.error);
     }
     return state;
 }

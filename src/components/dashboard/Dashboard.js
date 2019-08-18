@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -40,7 +41,6 @@ and upcoming events so that the user can quickly get a feel for his/her upcoming
 */
 class Dashboard extends React.Component{
     render(){
-        console.log(this.props)
         return(
             <div className="root" style={{margin: '25px'}}>
                 <Grid container justify='flex-start' direction='row' spacing={3} 
@@ -83,11 +83,14 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
+    console.log(storeState);
     return({
-        noteList: storeState.notes.noteList,
-        todoList: storeState.todos.todoList,
+        // grab data from firestore state prop
+        noteList: storeState.firestore.ordered.notes,
+        todoList: storeState.firestore.ordered.todos,
         eventList: storeState.events.eventList,
     });
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(firestoreConnect([{collection:'notes'}, {collection:'todos'}]), 
+    connect(mapStateToProps))(Dashboard);

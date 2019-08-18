@@ -18,7 +18,7 @@ class TodosPrev extends React.Component{
                     /* ternary to determine whether to show the list
                     or tell the user there are no todos
                     */
-                    todoList.length > 0 ? 
+                    todoList ? 
                     <List aria-label="previews">
                     { todoList && todoList.map(todo => {
                         return(

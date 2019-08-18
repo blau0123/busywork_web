@@ -11,6 +11,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 Shows summary of most important todos on the dashboard
 */
 class TodoSummary extends React.Component{
+    handleComplete(evt){
+        console.log(evt.target.id);
+    }
+
     render(){
         const todo = this.props.todo;
         return(
@@ -24,8 +28,11 @@ class TodoSummary extends React.Component{
                             <FormControl component='fieldset'>
                                 <FormGroup>
                                     <FormControlLabel
-                                    control = {<Checkbox checked={false} value='todo'/>}
-                                    label={todo.task} />
+                                    control = {<Checkbox checked={todo.completed} 
+                                                    value='todo'
+                                                    id={todo.id}
+                                                    onChange={this.handleComplete}/>}
+                                    label={todo.todo} />
                                 </FormGroup>
                             </FormControl>
                         </div>
