@@ -17,11 +17,7 @@ const NoteSummary = ({note}) => {
     return(
         <div className="container" style={{width: '100%'}}>
             <Card style={{height: '250px'}}>
-                <Link to={{
-                    pathname: '/notes/'+note.id,
-                    state: {
-                        note: note
-                    }}} style={list_item_styles}>
+                <Link to={'/notes/' + note.id} style={list_item_styles}>
                     <CardContent>
                         {/* holds text in each list item of notes list */}
                         <div className="note-content">

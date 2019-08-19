@@ -37,20 +37,5 @@ const NotesPrev = ({noteList}) => {
         </div>
     )
 }
-/*
-class NotesPrev extends React.Component{
-    render(){
-        return(
-            <List aria-label="previews">
-                <ListItem button>
-                    <NoteSummary />
-                </ListItem>
-                <ListItem button>
-                    <NoteSummary />
-                </ListItem>
-            </List>
-        );
-    }
-}
-*/
+
 export default NotesPrev;
