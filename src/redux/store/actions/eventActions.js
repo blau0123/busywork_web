@@ -11,6 +11,8 @@ export const addEvent = (event) => {
             title: event.title,
             description: event.description,
             location: event.location,
+            startTime: event.startTime,
+            endTime: event.endTime,
         }).then(() => {
             // make dispatch call to reducer after async call done
             dispatch({
