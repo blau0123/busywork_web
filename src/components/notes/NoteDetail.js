@@ -76,7 +76,7 @@ class NoteDetail extends React.Component{
         else{
             return(
                 <div className="container">
-                    <p>Note is loading...</p>
+                    <h4>Note is loading...</h4>
                 </div>
             )
         }

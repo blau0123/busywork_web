@@ -24,13 +24,8 @@ class EventSummary extends React.Component{
 
         return(
             <div className="container" style={{width: '100%'}}>
-                <Card>
-                    <Link to={{
-                        pathname: '/events/' + event.id,
-                        state: {
-                            event: event,
-                        },
-                    }} style={list_item_styles}>
+                <Link to={'/events/' + event.id} style={list_item_styles}>
+                    <Card>
                         <CardContent>
                             {/* holds text in each list item of event list */}
                             <div className="todo-content">
@@ -43,8 +38,8 @@ class EventSummary extends React.Component{
                                 </p>
                             </div>
                         </CardContent>
-                    </Link>
-                </Card>
+                    </Card>
+                </Link>
             </div>
         )
     }
