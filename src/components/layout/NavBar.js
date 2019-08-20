@@ -1,25 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-//import {makeStyles} from '@material-ui/core/styles'
 
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-/*
-const useStyles = makeStyles(() => ({
-    root: {
-        flexGrow: 1,
-    },
-
-    title: {
-        flexGrow: 1,
-        textDecoration: 'none',
-        color: 'white',
-    },
-}));
-*/
 
 const root_styles = {
     flexGrow: 1,
@@ -37,8 +24,6 @@ Component that handles the navigation bar at the top, holding the
 'home' button and the links to sign in/sign out/sign up
 */
 const NavBar = () => {
-    //const classes = useStyles();
-
     return(
         <div className="root" style={root_styles}>
             <AppBar position='static' style={{background: "#6E88C1"}}>
@@ -54,4 +39,8 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+    console.log(state);
+}
+
+export default connect(mapStateToProps)(NavBar);

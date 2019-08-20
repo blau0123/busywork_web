@@ -18,7 +18,6 @@ class EventSummary extends React.Component{
         const event = this.props.event;
 
         // convert timestamp to date objects to format
-        console.log(event);
         const startTimeAsDate = new Date(event.startTime.seconds * 1000);
         const endTimeAsDate = new Date(event.endTime.seconds * 1000)
 

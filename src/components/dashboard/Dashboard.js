@@ -83,7 +83,6 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
-    console.log(storeState);
     return({
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,

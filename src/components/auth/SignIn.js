@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {signIn} from '../../redux/store/actions/authActions';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,6 +15,12 @@ const signin_btn_styles = {
     padding: '10px',
     background: '#6E88C1',
     color: 'white',
+}
+
+const login_fail_styles = {
+    color: 'red',
+    fontSize: '18px',
+    textAlign: 'center',
 }
 
 /*
@@ -38,10 +47,12 @@ class SignIn extends React.Component{
     // handles when submit btn clicked
     handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(this.state);
+        // when submit signin, call signin action creator with this.state (holds credentials)
+        this.props.signIn(this.state);
     }
 
     render(){
+        const {authError} = this.props;
         return(
             <div className="bg-container">
                 <div style={{margin: '150px'}} className="container">
@@ -49,7 +60,7 @@ class SignIn extends React.Component{
                         <CardContent>
                             <div style={{padding: '40px'}} className="signin-container">
                                 <h3>Sign In</h3>
-                                <form onSubmit={{}} className="form-container">
+                                <form className="form-container">
                                     <FormControl fullWidth>
                                         <TextField id='email'
                                             label="Email" margin="normal" 
@@ -67,6 +78,7 @@ class SignIn extends React.Component{
                                     </FormControl>
                                 </form>
                             </div>
+                            {authError ? <p style={login_fail_styles}>Log in failed!</p> : null}
                         </CardContent>
                     </Card>
                 </div>
@@ -75,4 +87,18 @@ class SignIn extends React.Component{
     }
 }
 
-export default SignIn;
+// get signIn function as a prop that uses signIn action creator
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (credentials) => dispatch(signIn(credentials)),
+    }
+}
+
+// get auth error to display if error logging in or not
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

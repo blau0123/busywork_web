@@ -12,7 +12,7 @@ Shows summary of most important todos on the dashboard
 */
 class TodoSummary extends React.Component{
     handleComplete(evt){
-        // TODO
+        // TODO: show check, change firestore completed field to true, move to bottom
         console.log(evt.target.id);
     }
 
