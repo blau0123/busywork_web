@@ -56,7 +56,7 @@ class AddNote extends React.Component{
                             <div style={{padding: '40px'}} className="signin-container">
                                 <h3>New Note</h3>
                                 {/* text form for inputting new note */}
-                                <form onSubmit={{}} className="form-container">
+                                <form className="form-container">
                                     <FormControl fullWidth>
                                         <TextField id='title'
                                             label="Title" margin="normal" 

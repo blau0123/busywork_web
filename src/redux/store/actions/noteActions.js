@@ -11,7 +11,7 @@ export const addNote = (note) => {
         firestore.collection('notes').add({
             title: note.title,
             body: note.body,
-            createdAt: new Date(),
+            lastUpdated: new Date(),
         }).then( () => {
                 // make dispatch call to reducer after async call done
                 dispatch({
@@ -24,6 +24,27 @@ export const addNote = (note) => {
                     type: 'ADD_NOTE_FAIL',
                     error: err,
                 })
+        })
+    }
+}
+
+export const updateNote = (note) => {
+    // passed in title, body, and id from notedetail state as note
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('notes').doc(note.id).update({
+            title: note.title,
+            body: note.body,
+            lastUpdated: new Date(),
+        }).then(() => {
+            dispatch({
+                type: 'UPDATE_NOTE',
+            })
+        }).catch((err) => {
+            dispatch({
+                type: 'UPDATE_NOTE_FAIL',
+                error: err,
+            })
         })
     }
 }
