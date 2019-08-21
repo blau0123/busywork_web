@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import {signIn} from '../../redux/store/actions/authActions';
 
@@ -21,6 +22,14 @@ const login_fail_styles = {
     color: 'red',
     fontSize: '18px',
     textAlign: 'center',
+}
+
+const signup_link_styles = {
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    color: '#6E88C1',
+    display: 'inline-block',
+    marginLeft: '5px',
 }
 
 /*
@@ -54,12 +63,16 @@ class SignIn extends React.Component{
     render(){
         const {authError} = this.props;
         return(
-            <div className="bg-container">
-                <div style={{margin: '150px'}} className="container">
+            <div className="bg-container" style={{height: '100%'}}>
+                <div style={{margin: '20vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <div style={{padding: '40px'}} className="signin-container">
+                            <div style={{padding: '40px', textAlign:'center'}} className="signin-container">
                                 <h3>Sign In</h3>
+                                <div className="noAccount">
+                                    <p style={{display:'inline-block'}}>New to BusyWork? </p>
+                                    <Link to="/signup" style={signup_link_styles}>Sign up here!</Link>
+                                </div>
                                 <form className="form-container">
                                     <FormControl fullWidth>
                                         <TextField id='email'

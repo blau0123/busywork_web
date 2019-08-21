@@ -44,10 +44,10 @@ class SignUp extends React.Component{
     render(){
         return(
             <div className="bg-container">
-                <div style={{margin: '150px'}} className="container">
+                <div style={{margin: '20vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <div style={{padding: '40px'}} className="signin-container">
+                            <div style={{padding: '40px', textAlign:'center'}} className="signin-container">
                                 <h3>Sign up</h3>
                                 <form onSubmit={{}} className="form-container">
                                     <FormControl fullWidth>

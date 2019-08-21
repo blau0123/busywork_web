@@ -19,7 +19,7 @@ class NotesList extends React.Component{
         const noteList = this.props.noteList;
         return(
             <div className="bg-container">
-                <div style={{margin: '100px'}} className="container">
+                <div style={{margin: '5vh 20vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <h3 style={{paddingLeft:'25px'}}>Your Notes</h3>

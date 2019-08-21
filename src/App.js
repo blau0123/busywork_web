@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 import NavBar from './components/layout/NavBar';
 import SignIn from './components/auth/SignIn';
@@ -27,18 +28,18 @@ class App extends React.Component{
           <Switch>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/" component={Dashboard} />
 
-            <Route exact path="/notes" component={NotesList} />
-            <Route exact path="/notes/:id" component={NoteDetail} />
-            <Route path="/addnote" component={AddNote} />
+            <PrivateRoute exact path="/notes" component={NotesList} />
+            <PrivateRoute exact path="/notes/:id" component={NoteDetail} />
+            <PrivateRoute path="/addnote" component={AddNote} />
 
-            <Route exact path="/todos" component={TodoList} />
-            <Route path="/addtodo" component={AddTodo} />
+            <PrivateRoute exact path="/todos" component={TodoList} />
+            <PrivateRoute path="/addtodo" component={AddTodo} />
 
-            <Route path="/calendar" component={Calendar} />
-            <Route path="/events/:id" component={EventDetails} />
-            <Route path="/addevent" component={AddEvent} />
+            <PrivateRoute path="/calendar" component={Calendar} />
+            <PrivateRoute path="/events/:id" component={EventDetails} />
+            <PrivateRoute path="/addevent" component={AddEvent} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -13,7 +13,7 @@ class AddEvent extends React.Component{
     render(){
         return(
             <div className="bg-container">
-                <div style={{margin: '100px'}} className="container">
+                <div style={{margin: '5vh 20vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <div style={{padding: '40px'}} className="signin-container">
