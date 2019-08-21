@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {signOut} from '../../redux/store/actions/authActions';
+
 import Button from '@material-ui/core/Button';
 import {NavLink} from 'react-router-dom';
 
@@ -16,7 +19,7 @@ const list_item_styles = {
 The links shown to the user when he/she is signed in
 These links are settings and log out
 */
-const SignedInLinks = () => {
+const SignedInLinks = (props) => {
     return(
         // list of links user can go to when signed in (notes, todos, calendar, log out)
         <ul style={list_styles}>
@@ -24,7 +27,7 @@ const SignedInLinks = () => {
                 <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
                     <NavLink to="/" style={list_item_styles}>Settings</NavLink>
                 </Button>
-                <Button className="nav-button" color="inherit" style={{textTransform:'none'}}>
+                <Button className="nav-button" color="inherit" style={{textTransform:'none'}} onClick={props.signOut}>
                     <NavLink to="/" style={list_item_styles}>Log out</NavLink>
                 </Button>
             </li>
@@ -32,4 +35,10 @@ const SignedInLinks = () => {
     );
 }
 
-export default SignedInLinks;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signOut: () => dispatch(signOut()),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInLinks);

@@ -23,7 +23,10 @@ const title_styles = {
 Component that handles the navigation bar at the top, holding the
 'home' button and the links to sign in/sign out/sign up
 */
-const NavBar = () => {
+const NavBar = ({auth}) => {
+    // determine if user is logged in or not if auth prop holds uid property 
+    const linksToShow = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+
     return(
         <div className="root" style={root_styles}>
             <AppBar position='static' style={{background: "#6E88C1"}}>
@@ -31,8 +34,7 @@ const NavBar = () => {
                     <Link className="title" to="/" style={title_styles}>
                         <h2>BusyWork</h2>
                     </Link>
-                    <SignedInLinks />
-                    <SignedOutLinks />
+                    {linksToShow}
                 </Toolbar>
             </AppBar>
         </div>
@@ -40,7 +42,9 @@ const NavBar = () => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    return {
+        auth: state.firebase.auth,
+    }
 }
 
 export default connect(mapStateToProps)(NavBar);
