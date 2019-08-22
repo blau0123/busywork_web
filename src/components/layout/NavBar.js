@@ -8,8 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
+import { shadows } from '@material-ui/system';
+
 const root_styles = {
     flexGrow: 1,
+    height:'10vh',
 }
 
 const title_styles = {
@@ -27,13 +30,19 @@ const NavBar = ({auth}) => {
     // determine if user is logged in or not if auth prop holds uid property 
     const linksToShow = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
 
+    const dashboardOrHome = auth.uid ? 
+    <Link className="title" to="/dashboard" style={title_styles}>
+        <h2>BusyWork</h2>
+    </Link> :
+    <Link className="title" to="/" style={title_styles}>
+        <h2>BusyWork</h2>
+    </Link>;
+
     return(
         <div className="root" style={root_styles}>
-            <AppBar position='static' style={{background: "#6E88C1"}}>
+            <AppBar position='static' style={{background: "#B0D7E6", fontFamily:'Playfair Display, serif'}}>
                 <Toolbar className="container">
-                    <Link className="title" to="/" style={title_styles}>
-                        <h2>BusyWork</h2>
-                    </Link>
+                    {dashboardOrHome}
                     {linksToShow}
                 </Toolbar>
             </AppBar>

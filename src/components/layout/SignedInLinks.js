@@ -6,13 +6,14 @@ import Button from '@material-ui/core/Button';
 import {NavLink} from 'react-router-dom';
 
 const list_styles = {
-    "list-style-type": "none",
-    "display": "inline"
+    listStyleType: "none",
+    display: "inline",
 }
 
 const list_item_styles = {
-    "text-decoration": "none",
-    "color": "white"
+    textDecoration: "none",
+    color: "white",
+    fontFamily:'Playfair Display, serif',
 }
 
 /*

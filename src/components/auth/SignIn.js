@@ -14,8 +14,9 @@ const signin_btn_styles = {
     textTransform: 'none',
     margin: '10px',
     padding: '10px',
-    background: '#6E88C1',
+    background: '#B0D7E6',
     color: 'white',
+    fontFamily:'Playfair Display, serif',
 }
 
 const login_fail_styles = {
@@ -27,9 +28,16 @@ const login_fail_styles = {
 const signup_link_styles = {
     textDecoration: 'none',
     fontWeight: 'bold',
-    color: '#6E88C1',
+    color: '#B0D7E6',
     display: 'inline-block',
     marginLeft: '5px',
+}
+
+const bg_container_styles = {
+    height:'100%', 
+    width:'100%', 
+    background:'#B0D7E6', 
+    position:'fixed',
 }
 
 /*
@@ -64,17 +72,17 @@ class SignIn extends React.Component{
         // check if user is already logged in/signed up; if so, then take to home page
         const {authError, auth} = this.props;
         if (auth.uid){
-            return <Redirect to="/" />;
+            return <Redirect to="/dashboard" />;
         }
 
         return(
-            <div className="bg-container" style={{height: '100%'}}>
+            <div className="bg-container" style={bg_container_styles}>
                 <div style={{margin: '20vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <div style={{padding: '40px', textAlign:'center'}} className="signin-container">
+                            <div style={{padding: '40px', textAlign:'center', fontFamily:'Playfair Display, serif'}} className="signin-container">
                                 <h3>Sign In</h3>
-                                <div className="noAccount">
+                                <div className="go-to-signup">
                                     <p style={{display:'inline-block'}}>New to BusyWork? </p>
                                     <Link to="/signup" style={signup_link_styles}>Sign up here!</Link>
                                 </div>

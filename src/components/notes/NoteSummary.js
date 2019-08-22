@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 const list_item_styles = {
     textDecoration: 'none',
     color: 'black',
+    fontFamily:'Playfair Display, serif',
 }
 
 /*

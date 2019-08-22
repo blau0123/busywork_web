@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import {signUp} from '../../redux/store/actions/authActions';
 
@@ -10,18 +10,35 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 
+//#6E88C1
 const signup_btn_styles = {
     textTransform: 'none',
     margin: '10px',
     padding: '10px',
-    background: '#6E88C1',
+    background: '#B0D7E6',
     color: 'white',
+    fontFamily:'Playfair Display, serif',
 }
 
 const signup_fail_styles = {
     color: 'red',
     fontSize: '18px',
     textAlign: 'center',
+}
+
+const bg_container_styles = {
+    height:'100%', 
+    width:'100%', 
+    background:'#B0D7E6', 
+    position:'fixed',
+}
+
+const signin_link_styles = {
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    color: '#B0D7E6',
+    display: 'inline-block',
+    marginLeft: '5px',
 }
 
 /*
@@ -58,16 +75,16 @@ class SignUp extends React.Component{
         // check if user is already logged in/signed up; if so, then take to home page
         const {auth, authError} = this.props;
         if (auth.uid){
-            return <Redirect to="/" />;
+            return <Redirect to="/dashboard" />;
         }
 
         return(
-            <div className="bg-container">
+            <div className="bg-container" style={bg_container_styles}>
                 <div style={{margin: '20vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <div style={{padding: '40px', textAlign:'center'}} className="signin-container">
-                                <h3>Sign up</h3>
+                                <h3 style={{fontFamily:'Playfair Display, serif'}}>Sign up</h3>
                                 <form className="form-container">
                                     <FormControl fullWidth>
                                         <TextField id='firstname'
@@ -93,6 +110,10 @@ class SignUp extends React.Component{
                                         </Button>
                                     </FormControl>
                                 </form>
+                                <div className="go-to-signin" style={{fontFamily:'Playfair Display, serif'}}>
+                                    <p style={{display:'inline-block'}}>Already have an account?</p>
+                                    <Link to="/signin" style={signin_link_styles}>Sign in here!</Link>
+                                </div>
                                 <div className="fail-message">
                                     {authError === null ? null: <p style={signup_fail_styles}>{authError}</p> }
                                 </div>

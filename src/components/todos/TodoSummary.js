@@ -27,7 +27,7 @@ class TodoSummary extends React.Component{
                         {/* holds text in each list item of todo list */}
                         <div className='todo-content'>
                             <FormControl component='fieldset'>
-                                <FormGroup>
+                                <FormGroup> 
                                     <FormControlLabel
                                     control = {<Checkbox checked={todo.completed} 
                                                     value='todo'

@@ -9,7 +9,7 @@ and if not, then the signin page is rendered for the user to sign in
 const PrivateRoute = ({component: Component, auth, ...rest}) => {
     return(
         <Route {...rest} render={props => 
-            auth.uid ? <Component {...props} /> : <Redirect to="signin" />
+            auth.uid ? <Component {...props} /> : <Redirect to="/" />
         } />
     )
 }

@@ -19,7 +19,8 @@ a link to the notes list when clicked
 const GridNoteTitle = () => {
     return(
         // aligns the title and the add button along the header of the card
-        <Grid container item direction='row' xs={12} justify='flex-end'>
+        <Grid container item direction='row' xs={12} justify='flex-end' 
+            style={{fontFamily:'Playfair Display, serif'}}>
             <Link to='/notes' style={title_styles}>Notes</Link>
             <div style={{padding: '15px'}}>
                 <Link to='/addnote' style={title_styles}>Add</Link>
