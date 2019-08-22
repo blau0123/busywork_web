@@ -1,6 +1,6 @@
 const initState = {
     // if true, then error when signing in
-    authError: false,
+    authError: null,
 }
 
 const authReducer = (state = initState, action) => {
@@ -9,13 +9,13 @@ const authReducer = (state = initState, action) => {
             console.log("signed in!");
             return {
                 ...state,
-                authError: false,
+                authError: null,
             }
         case 'SIGNIN_FAIL':
             console.log("sign in failed");
             return {
                 ...state,
-                authError: true,
+                authError: action.error,
             }
         case 'SIGNOUT_SUCCESS':
             console.log("signed out successfully");
@@ -23,6 +23,18 @@ const authReducer = (state = initState, action) => {
         case 'SIGNOUT_FAIL':
             console.log("sign out failed");
             return state;
+        case 'SIGNUP_SUCCESS':
+            console.log("signed up successfully");
+            return {
+                ...state,
+                authError: null,
+            }
+        case 'SIGNUP_FAIL':
+            console.log("signed up failed");
+            return {
+                ...state,
+                authError: action.error.message,
+            }
         default:
             return state;
     }
