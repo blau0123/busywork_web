@@ -78,7 +78,7 @@ class SignIn extends React.Component{
 
         return(
             <div className="bg-container" style={bg_container_styles}>
-                <div style={{margin: '20vh 30vw'}} className="container">
+                <div style={{margin: '10vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <div style={{padding: '40px', textAlign:'center', fontFamily:'Playfair Display, serif'}} className="signin-container">

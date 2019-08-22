@@ -27,8 +27,8 @@ const signup_fail_styles = {
 }
 
 const bg_container_styles = {
-    height:'100%', 
-    width:'100%', 
+    minHeight:'100vh', 
+    minWidth:'100vw', 
     background:'#B0D7E6', 
     position:'fixed',
 }
@@ -80,7 +80,7 @@ class SignUp extends React.Component{
 
         return(
             <div className="bg-container" style={bg_container_styles}>
-                <div style={{margin: '20vh 30vw'}} className="container">
+                <div style={{margin: '3vh 30vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
                             <div style={{padding: '40px', textAlign:'center'}} className="signin-container">
