@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -50,8 +52,9 @@ class EventList extends React.Component{
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
     return({
-        eventList: storeState.events.eventList
+        eventList: storeState.firestore.ordered.events,
     });
 }
 
-export default connect(mapStateToProps)(EventList);
+export default compose(firestoreConnect([{collection:'events'}]), 
+    connect(mapStateToProps))(EventList);

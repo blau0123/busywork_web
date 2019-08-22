@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -37,8 +39,9 @@ class TodoList extends React.Component{
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
     return({
-        todoList: storeState.todos.todoList,
+        todoList: storeState.firestore.ordered.todos,
     });
 }
 
-export default connect(mapStateToProps)(TodoList);
+export default compose(firestoreConnect([{collection:'todos'}]), 
+    connect(mapStateToProps))(TodoList);
