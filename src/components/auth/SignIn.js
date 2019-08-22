@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import {signIn} from '../../redux/store/actions/authActions';
 
@@ -61,7 +61,12 @@ class SignIn extends React.Component{
     }
 
     render(){
-        const {authError} = this.props;
+        // check if user is already logged in/signed up; if so, then take to home page
+        const {authError, auth} = this.props;
+        if (auth.uid){
+            return <Redirect to="/" />;
+        }
+
         return(
             <div className="bg-container" style={{height: '100%'}}>
                 <div style={{margin: '20vh 30vw'}} className="container">
@@ -111,6 +116,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         authError: state.auth.authError,
+        auth: state.firebase.auth,
     }
 }
 

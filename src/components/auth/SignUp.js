@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -42,6 +44,12 @@ class SignUp extends React.Component{
     }
 
     render(){
+        // check if user is already logged in/signed up; if so, then take to home page
+        const {auth} = this.props;
+        if (auth.uid){
+            return <Redirect to="/" />;
+        }
+
         return(
             <div className="bg-container">
                 <div style={{margin: '20vh 30vw'}} className="container">
@@ -75,4 +83,10 @@ class SignUp extends React.Component{
     }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth,
+    }
+}
+
+export default connect(mapStateToProps)(SignUp);
