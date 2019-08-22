@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import Image from '../../images/succ-bg.png'
 
 const signin_btn_styles = {
     textTransform: 'none',
@@ -90,11 +91,11 @@ class SignIn extends React.Component{
                                     <FormControl fullWidth>
                                         <TextField id='email'
                                             label="Email" margin="normal" 
-                                            style={{margin:'10px'}}
+                                            style={{margin:'1vw'}}
                                             onChange={this.handleChange}/>
                                         <TextField id="password"
                                             label="Password" type="password" margin="normal" 
-                                            style={{margin:'10px'}}
+                                            style={{margin:'1vw'}}
                                             onChange={this.handleChange}/>
                                         <Button variant='contained' className="submit-btn"
                                             onClick={this.handleSubmit}

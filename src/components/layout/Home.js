@@ -34,21 +34,21 @@ class Home extends React.Component{
     render(){
         return (
             <div className='container' style={container_styles}>
-                <Grid container spacing={0} className="list-container" align="center" justify="center">
+                <Grid container spacing={3} className="list-container" align="center" justify="center">
                     <Grid item xs={12}>
                         <h1 style={title_styles}>BUSYWORK</h1>
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item align='center' xs={12} md={2}>
                         <Button size="large" variant="outlined" 
                             className="nav-button"
-                            style={{textTransform:'none', borderColor:'white'}}>
+                            style={{textTransform:'none', borderColor:'white', minWidth:100}}>
                             <NavLink to="/signup" style={list_item_styles}>SIGN UP</NavLink>
                         </Button>
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item align='center' xs={12} md={2}>
                         <Button size="large" variant="outlined" 
                             className="nav-button"
-                            style={{textTransform:'none', borderColor:'white'}}>
+                            style={{textTransform:'none', borderColor:'white', minWidth:100}}>
                             <NavLink to="/signin" style={list_item_styles}>SIGN IN</NavLink>
                         </Button>
                     </Grid>

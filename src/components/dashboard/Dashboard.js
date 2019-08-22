@@ -46,7 +46,7 @@ class Dashboard extends React.Component{
                 <Grid container justify='flex-start' direction='row' spacing={3} 
                 alignItems='stretch' wrap='wrap'>
                     {/* notes grid item */}
-                    <Grid item className="notes-item" xs={7} style={{margin: '10px'}}>
+                    <Grid item className="notes-item" sm={12} md={7} style={{margin: '10px'}}>
                         <GridNoteTitle />
                         <Card style={note_grid_styles}>
                             <CardContent>
@@ -55,7 +55,7 @@ class Dashboard extends React.Component{
                         </Card>
                     </Grid>
                     {/* imbedded grid to allow notes and todos/events to be side by side */}
-                    <Grid container item direction='row' xs={5} spacing={3} justify='flex-end'>
+                    <Grid container item direction='row' sm={12} md={5} spacing={3} justify='flex-end'>
                         {/* todo grid item */}
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
                             <GridTodoTitle />
@@ -66,7 +66,7 @@ class Dashboard extends React.Component{
                             </Card>
                         </Grid>
                         {/* events grid item */}
-                        <Grid item className="events-item" xs={12} style={{margin: '10px'}}>
+                        <Grid item className="events-item" sm={12} md={12} style={{margin: '10px'}}>
                             <GridCalendarTitle />
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
