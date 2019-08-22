@@ -96,7 +96,7 @@ class SignIn extends React.Component{
                                     </FormControl>
                                 </form>
                             </div>
-                            {authError ? <p style={login_fail_styles}>Log in failed!</p> : null}
+                            {authError === null ? null : <p style={login_fail_styles}>{authError}</p>}
                         </CardContent>
                     </Card>
                 </div>

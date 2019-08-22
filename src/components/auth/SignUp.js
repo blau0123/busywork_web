@@ -93,7 +93,9 @@ class SignUp extends React.Component{
                                         </Button>
                                     </FormControl>
                                 </form>
-                                {authError ? <p style={signup_fail_styles}>{authError}</p> : null}
+                                <div className="fail-message">
+                                    {authError === null ? null: <p style={signup_fail_styles}>{authError}</p> }
+                                </div>
                             </div>
                         </CardContent>
                     </Card>
