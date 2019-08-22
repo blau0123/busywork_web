@@ -33,7 +33,8 @@ class NoteSummary extends React.Component{
         this.deleteNote = this.deleteNote.bind(this);
     }
 
-    deleteNote(){
+    deleteNote(evt){
+        evt.preventDefault();
        // call deletenote action creator to delete note from firestore
        const noteToDelete = this.props.note;
        this.props.deleteNote(noteToDelete);

@@ -30,7 +30,8 @@ class EventSummary extends React.Component{
         this.deleteEvent = this.deleteEvent.bind(this);
     }
 
-    deleteEvent(){
+    deleteEvent(evt){
+        evt.preventDefault();
         const eventToDelete = this.props.event;
         this.props.deleteEvent(eventToDelete);
     }
