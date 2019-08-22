@@ -1,8 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+import {deleteEvent} from '../../redux/store/actions/eventActions';
 
 const list_item_styles = {
     textDecoration: 'none',
@@ -10,11 +14,27 @@ const list_item_styles = {
     fontFamily:'Playfair Display, serif',
 }
 
+const delete_styles = {
+    color: 'black',
+    fontFamily:'Playfair Display, serif',
+    float:'right'
+}
+
 /*
 Shows summary of a specified upcoming events on the dashboard, which makes
 it quicker than traveling to then going through your calendar
 */
 class EventSummary extends React.Component{
+    constructor(){
+        super();
+        this.deleteEvent = this.deleteEvent.bind(this);
+    }
+
+    deleteEvent(){
+        const eventToDelete = this.props.event;
+        this.props.deleteEvent(eventToDelete);
+    }
+
     render(){
         const event = this.props.event;
 
@@ -27,6 +47,9 @@ class EventSummary extends React.Component{
                 <Link to={'/events/' + event.id} style={list_item_styles}>
                     <Card>
                         <CardContent>
+                            <Button style={delete_styles} onClick={this.deleteEvent}>
+                                <Link to='/dashboard' style={list_item_styles}>X</Link>
+                            </Button>
                             {/* holds text in each list item of event list */}
                             <div className="todo-content">
                                 <h3>{event.title}</h3>
@@ -45,4 +68,10 @@ class EventSummary extends React.Component{
     }
 }
 
-export default EventSummary;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteEvent: (event) => dispatch(deleteEvent(event)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(EventSummary);

@@ -1,7 +1,7 @@
 const initState = {
     eventList:[
-        {id:'1', title:'eat ass', description:'remember to get ebola', location:'elysia\'s ass'}
-     ]
+
+    ]
 }
 
 const eventsReducer = (state = initState, action) => {
@@ -9,10 +9,19 @@ const eventsReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_EVENT':
             console.log('event added');
+            return state;
         case 'ADD_EVENT_FAIL':
             console.log('fail to add event');
+            return state;
+        case 'DELETE_SUCCESS':
+            console.log('deleted event!');
+            return state;
+        case 'DELETE_FAIL':
+            console.log('delete failed!');
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default eventsReducer;

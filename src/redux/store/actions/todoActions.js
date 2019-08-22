@@ -6,13 +6,17 @@ add todo, delete todo on completion, etc
 export const addTodo = (todo) => {
     // allowed args getfirebase, getfirestore in index.js
     return (dispatch, getState, {getFirebase, getFirestore}) => {
-        // make async call to db
         const firestore = getFirestore();
+        // get uid to keep track of which user wrote which todo
+        const userId = getState().firebase.auth.uid;
+
+
         // when adding a todo, completed will always be false first
         firestore.collection('todos').add({
             todo: todo.todo,
             completed: false,
-            createdAt: new Date(),
+            lastUpdated: new Date(),
+            authorId: userId,
         }).then(() => {
             // make dispatch call to reducer after async call done
             dispatch({

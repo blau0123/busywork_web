@@ -1,6 +1,6 @@
 const initState = {
     noteList: [
-       {id:'1', title:'yeet', body:'yeet'},
+
     ]
 }
 
@@ -18,6 +18,12 @@ const notesReducer = (state = initState, action) => {
             return state;
         case 'UPDATE_NOTE_FAIL':
             console.log('failed to update note', action.error);
+            return state;
+        case 'DELETE_SUCCESS':
+            console.log('deleted note!');
+            return state;
+        case 'DELETE_FAIL':
+            console.log('delete failed!');
             return state;
         default:
             return state;

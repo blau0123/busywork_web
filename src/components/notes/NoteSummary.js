@@ -1,8 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+import {deleteNote} from '../../redux/store/actions/noteActions';
 
 const list_item_styles = {
     textDecoration: 'none',
@@ -10,44 +14,58 @@ const list_item_styles = {
     fontFamily:'Playfair Display, serif',
 }
 
+const delete_styles = {
+    color: 'black',
+    fontFamily:'Playfair Display, serif',
+    float:'right'
+}
+
 /*
 Summary of notes that are displayed on the dashboard for easy access,
 rather than showing all notes or having to traverse to the notes page
 */
-const NoteSummary = ({note}) => {
-    return(
-        <div className="container" style={{width: '100%'}}>
-            <Link to={'/notes/' + note.id} style={list_item_styles}>
-                <Card style={{height: '250px'}}>
-                    <CardContent>
-                        {/* holds text in each list item of notes list */}
-                        <div className="note-content">
-                            <h3>{note.title}</h3>
-                            <p>{note.body}</p>
-                        </div>
-                    </CardContent>
-                </Card>
-            </Link>
-        </div>
-    )
-}
-/*
 class NoteSummary extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            showPopup: false,
+        }
+        this.deleteNote = this.deleteNote.bind(this);
+    }
+
+    deleteNote(){
+       // call deletenote action creator to delete note from firestore
+       const noteToDelete = this.props.note;
+       this.props.deleteNote(noteToDelete);
+    }
+
     render(){
+        const {note} = this.props;
         return(
             <div className="container" style={{width: '100%'}}>
-                <Card style={{height: '250px'}}>
-                    <CardContent>
-                        <div className="note-content">
-                            <h3>a note</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </CardContent>
-                </Card>
+                <Link to={'/notes/' + note.id} style={list_item_styles}>
+                    <Card style={{height: '250px'}}>
+                        <CardContent>
+                            <Button style={delete_styles} onClick={this.deleteNote}>
+                                <Link to='/dashboard' style={list_item_styles}>X</Link>
+                            </Button>
+                            {/* holds text in each list item of notes list */}
+                            <div className="note-content">
+                                <h3>{note.title}</h3>
+                                <p>{note.body}</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </Link>
             </div>
         )
     }
 }
-*/
 
-export default NoteSummary;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteNote: (note) => dispatch(deleteNote(note)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NoteSummary);

@@ -5,13 +5,16 @@ add note, delete note, etc
 
 export const addNote = (note) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
-        // make async call to db
         const firestore = getFirestore();
+        // get uid to keep track of which user wrote which note
+        const userId = getState().firebase.auth.uid;
+
         // add new doc to 'notes' collection in firestore
         firestore.collection('notes').add({
             title: note.title,
             body: note.body,
             lastUpdated: new Date(),
+            authorId: userId,
         }).then( () => {
                 // make dispatch call to reducer after async call done
                 dispatch({
@@ -43,6 +46,22 @@ export const updateNote = (note) => {
         }).catch((err) => {
             dispatch({
                 type: 'UPDATE_NOTE_FAIL',
+                error: err,
+            })
+        })
+    }
+}
+
+export const deleteNote = (note) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('notes').doc(note.id).delete().then(() => {
+            dispatch({
+                type: 'DELETE_SUCCESS'
+            })
+        }).catch((err) => {
+            dispatch({
+                type: 'DELETE_FAIL',
                 error: err,
             })
         })
