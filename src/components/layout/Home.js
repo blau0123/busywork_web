@@ -9,7 +9,7 @@ const title_styles = {
     fontFamily:'Playfair Display, serif',
     fontSize: '90px',
     textAlign: 'center',
-    color:'white',
+    color:'#F9F9F9',
 }
 
 const container_styles = {
@@ -25,7 +25,7 @@ const container_styles = {
 
 const list_item_styles = {
     textDecoration: 'none',
-    color:'white',
+    color:'#F9F9F9',
     fontFamily:'Playfair Display, serifs',
     padding:'5px',
 }
