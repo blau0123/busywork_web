@@ -9,8 +9,13 @@ const todosReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_TODO':
             console.log('added todo');
+            return state;
+        case 'COMPLETED_SUCCESS':
+            console.log('completed action');
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default todosReducer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,17 +8,33 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
+import {completeTodo} from '../../redux/store/actions/todoActions';
+
 /*
 Shows summary of most important todos on the dashboard
 */
 class TodoSummary extends React.Component{
+    constructor(){
+        super();
+        this.handleComplete = this.handleComplete.bind(this);
+    }
+
     handleComplete(evt){
         // TODO: show check, change firestore completed field to true, move to bottom
-        console.log(evt.target.id);
+        /* using todo's id, change completed field of firestore doc to true 
+           evt.target.id is the id of the todo in firestore
+        */
+       console.log(this.props);
+        this.props.completeTodo(evt.target.id);
     }
 
     render(){
         const todo = this.props.todo;
+        // if todo is completed, don't render this component
+        if (todo.completed){
+            return null;
+        }
+
         return(
             <div className='container' style={{width: '100%'}}>
                 <Card>
@@ -44,4 +61,10 @@ class TodoSummary extends React.Component{
     }
 }
 
-export default TodoSummary;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        completeTodo: (todoId) => dispatch(completeTodo(todoId))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(TodoSummary);

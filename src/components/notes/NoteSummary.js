@@ -42,11 +42,13 @@ class NoteSummary extends React.Component{
 
     render(){
         const {note} = this.props;
+        const lastUpdated = new Date(note.lastUpdated.seconds * 1000);
+
         return(
             <div className="container" style={{width: '100%'}}>
                 <Link to={'/notes/' + note.id} style={list_item_styles}>
                     <Card style={{height: '250px'}}>
-                        <CardContent>
+                        <CardContent style={{maxHeight:'70%', overflow:'hidden'}}>
                             <Button style={delete_styles} onClick={this.deleteNote}>
                                 <Link to='/dashboard' style={list_item_styles}>X</Link>
                             </Button>
@@ -55,6 +57,9 @@ class NoteSummary extends React.Component{
                                 <h3>{note.title}</h3>
                                 <p>{note.body}</p>
                             </div>
+                        </CardContent>
+                        <CardContent>
+                            {lastUpdated.toLocaleString()}
                         </CardContent>
                     </Card>
                 </Link>

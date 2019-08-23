@@ -32,3 +32,23 @@ export const addTodo = (todo) => {
         })
     }
 }
+
+export const completeTodo = (todoId) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        
+        // checked, so completed will always go from false to true
+        firestore.collection('todos').doc(todoId).update({
+            completed: true,
+        }).then(() => {
+            dispatch({
+                type: 'COMPLETED_SUCCESS'
+            })
+        }).catch((err) => {
+            dispatch({
+                type: 'COMPLETED_FAIL',
+                error: err,
+            })
+        })
+    }
+}
