@@ -11,9 +11,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 import {completeTodo} from '../../redux/store/actions/todoActions';
 
 /*
-Shows summary of most important todos on the dashboard
+Shows summary of completed todos on the dashboard
 */
-class TodoSummary extends React.Component{
+class CompletedTodoSummary extends React.Component{
     constructor(){
         super();
         this.handleComplete = this.handleComplete.bind(this);
@@ -30,11 +30,11 @@ class TodoSummary extends React.Component{
 
     render(){
         const todo = this.props.todo;
-        // if todo is completed, don't render this component
-        if (todo.completed){
+        // if todo is not completed, don't render this component
+        if (!todo.completed){
             return null;
         }
-        
+
         return(
             <div className='container' style={{width: '100%'}}>
                 <Card>
@@ -67,4 +67,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(TodoSummary);
+export default connect(null, mapDispatchToProps)(CompletedTodoSummary);
