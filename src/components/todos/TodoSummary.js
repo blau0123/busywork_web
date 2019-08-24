@@ -30,11 +30,11 @@ class TodoSummary extends React.Component{
 
     render(){
         const todo = this.props.todo;
-        // if todo is completed, don't render this component
+        /* if todo is completed, don't render this component
         if (todo.completed){
             return null;
         }
-        
+        */
         return(
             <div className='container' style={{width: '100%'}}>
                 <Card>
