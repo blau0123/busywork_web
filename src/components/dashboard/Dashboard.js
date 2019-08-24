@@ -41,6 +41,14 @@ and upcoming events so that the user can quickly get a feel for his/her upcoming
 */
 class Dashboard extends React.Component{
     render(){
+        // sort notelist by time last updated
+        if (this.props.noteList){
+            this.props.noteList.sort((note1, note2) => {
+                return (note1.lastUpdated.seconds > note2.lastUpdated.seconds) ? -1 : 1
+            })
+        }
+
+        // sort eventlist by closest starttime to now
         return(
             <div className="root" style={{margin: '25px'}}>
                 <Grid container justify='flex-start' direction='row' spacing={3} 
@@ -83,6 +91,7 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
+    console.log(storeState);
     return({
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,

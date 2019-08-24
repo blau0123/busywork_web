@@ -16,7 +16,7 @@ class AddEvent extends React.Component{
                 <div style={{margin: '5vh 20vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <div style={{padding: '40px'}} className="signin-container">
+                            <div style={{padding: '40px', fontFamily:'Playfair Display, serif'}} className="signin-container">
                                 <h3>New Event</h3>
                                 <AddEventForm />
                             </div>

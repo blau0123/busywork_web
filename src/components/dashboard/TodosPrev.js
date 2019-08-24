@@ -12,6 +12,7 @@ const todolist_title_styles = {
     width:'100%',
     borderBottom:'1px solid #000',
     padding:'5px',
+    leftMargin:'5px',
 }
 
 /* pulls in data from firebase and passes data of each notes item

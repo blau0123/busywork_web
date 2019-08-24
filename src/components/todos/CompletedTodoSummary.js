@@ -8,24 +8,12 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import {completeTodo} from '../../redux/store/actions/todoActions';
-
 /*
 Shows summary of completed todos on the dashboard
 */
 class CompletedTodoSummary extends React.Component{
     constructor(){
         super();
-        this.handleComplete = this.handleComplete.bind(this);
-    }
-
-    handleComplete(evt){
-        // TODO: show check, change firestore completed field to true, move to bottom
-        /* using todo's id, change completed field of firestore doc to true 
-           evt.target.id is the id of the todo in firestore
-        */
-       console.log(this.props);
-        this.props.completeTodo(evt.target.id);
     }
 
     render(){
@@ -46,11 +34,12 @@ class CompletedTodoSummary extends React.Component{
                             <FormControl component='fieldset'>
                                 <FormGroup> 
                                     <FormControlLabel
+                                    checked={todo.completed}
                                     control = {<Checkbox checked={todo.completed} 
                                                     value='todo'
                                                     id={todo.id}
-                                                    onChange={this.handleComplete}/>}
-                                    label={todo.todo} />
+                                                    style={{textDecoration:'line-through', color:'#B0D7E6'}}/>}
+                                    label={todo.todo}/>
                                 </FormGroup>
                             </FormControl>
                         </div>
@@ -61,10 +50,4 @@ class CompletedTodoSummary extends React.Component{
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        completeTodo: (todoId) => dispatch(completeTodo(todoId))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(CompletedTodoSummary);
+export default CompletedTodoSummary;

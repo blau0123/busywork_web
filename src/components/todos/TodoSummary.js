@@ -50,7 +50,9 @@ class TodoSummary extends React.Component{
                                                     value='todo'
                                                     id={todo.id}
                                                     onChange={this.handleComplete}/>}
-                                    label={todo.todo} />
+                                    label={todo.todo}
+                                    iconStyles={{fill:'white'}}
+                                    labelStyle={{color:'white'}}/>
                                 </FormGroup>
                             </FormControl>
                         </div>

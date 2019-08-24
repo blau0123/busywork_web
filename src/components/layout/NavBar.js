@@ -25,11 +25,14 @@ const title_styles = {
 /*
 Component that handles the navigation bar at the top, holding the
 'home' button and the links to sign in/sign out/sign up
+Only shows if user is logged in and hidden if not logged in, for more
+room for the home page. Determined in App.js
 */
 const NavBar = ({auth}) => {
     // determine if user is logged in or not if auth prop holds uid property 
     const linksToShow = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
 
+    // if user is logged in, show dashboard and if not, then show home screen
     const dashboardOrHome = auth.uid ? 
     <Link className="title" to="/dashboard" style={title_styles}>
         <h2>BusyWork</h2>

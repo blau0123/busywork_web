@@ -9,12 +9,13 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 
-const signin_btn_styles = {
+const submit_btn_styles = {
     textTransform: 'none',
     margin: '10px',
     padding: '10px',
     background: '#6E88C1',
     color: 'white',
+    fontFamily:'Playfair Display, serif',
 }
 
 /*
@@ -61,17 +62,29 @@ class AddNote extends React.Component{
                                         <TextField id='title'
                                             label="Title" margin="normal" 
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <TextField id="body"
                                             label="What's on your mind?"
                                             margin="normal" 
                                             multiline='true'
                                             rows='20'
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <Button variant='contained' className="submit-btn"
                                             onClick={this.handleSubmit}
-                                            style={signin_btn_styles}>
+                                            style={submit_btn_styles}>
                                             Add Note
                                         </Button>
                                     </FormControl>
