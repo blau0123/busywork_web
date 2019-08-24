@@ -13,6 +13,12 @@ const todosReducer = (state = initState, action) => {
         case 'COMPLETED_SUCCESS':
             console.log('completed action');
             return state;
+        case 'DELETE_SUCCESS':
+            console.log('deleted todo');
+            return state;
+        case 'DELETE_FAIL':
+            console.log('delete failed')
+            return state;
         default:
             return state;
     }

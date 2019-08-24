@@ -52,3 +52,20 @@ export const completeTodo = (todoId) => {
         })
     }
 }
+
+export const deleteTodo = (todoId) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+
+        firestore.collection('todos').doc(todoId).delete().then(() => {
+            dispatch({
+                type: 'DELETE_SUCCESS',
+            })
+        }).catch((err) => {
+            dispatch({
+                type: 'DELETE_FAIL',
+                error: err,
+            })
+        })
+    }
+}

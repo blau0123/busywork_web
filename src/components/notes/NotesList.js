@@ -9,6 +9,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 import NoteSummary from './NoteSummary'
+import GridNoteTitle from '../dashboard/GridNoteTitle';
 
 /*
 List of note summaries, accessed by clicking on the notes title on
@@ -22,7 +23,7 @@ class NotesList extends React.Component{
                 <div style={{margin: '5vh 20vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <h3 style={{paddingLeft:'25px'}}>Your Notes</h3>
+                            <GridNoteTitle />
                             <List className="list-container" aria-label="previews">
                                 {
                                     noteList && noteList.map(note => {

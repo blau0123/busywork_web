@@ -10,6 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 import TodoSummary from './TodoSummary';
 import CompletedTodoSummary from './CompletedTodoSummary';
+import GridTodoTitle from '../dashboard/GridTodoTitle';
 
 const todolist_title_styles = {
     overflow:'hidden',
@@ -28,7 +29,7 @@ class TodoList extends React.Component{
                 <div style={{margin: '5vh 20vw'}} className="container">
                     <Card style={{background: '#F9F9F9'}}>
                         <CardContent>
-                            <h3 style={{paddingLeft:'25px'}}>Your Todos</h3>
+                            <GridTodoTitle />
                             {
                                 /* ternary to determine whether to show the list of noncompleted & completed todos
                                 or tell the user there are no todos
