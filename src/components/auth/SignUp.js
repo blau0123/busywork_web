@@ -49,8 +49,8 @@ class SignUp extends React.Component{
     constructor(){
         super();
         this.state = {
-            firstname:'',
-            lastname:'',
+            firstName:'',
+            lastName:'',
             email:'',
             password:''
         }
@@ -87,11 +87,11 @@ class SignUp extends React.Component{
                                 <h3 style={{fontFamily:'Playfair Display, serif'}}>Sign up</h3>
                                 <form className="form-container">
                                     <FormControl fullWidth>
-                                        <TextField id='firstname'
+                                        <TextField id='firstName'
                                             label="First Name" margin="normal" 
                                             style={{margin:'10px'}}
                                             onChange={this.handleChange}/>
-                                        <TextField id='lastname'
+                                        <TextField id='lastName'
                                             label="Last Name" margin="normal" 
                                             style={{margin:'10px'}}
                                             onChange={this.handleChange}/>

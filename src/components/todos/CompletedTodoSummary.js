@@ -62,7 +62,7 @@ class CompletedTodoSummary extends React.Component{
                                                                 style={{textDecoration:'line-through', color:'#B0D7E6'}}/>}
                                                 label={todo.todo}/>
                                         </Grid>
-                                        <Grid item xs={5} md={3} lg={2}>
+                                        <Grid item xs={5} md={3} lg={2} className='delete-btn'>
                                             <Button style={delete_styles} onClick={this.deleteTodo}>
                                                 X
                                             </Button>

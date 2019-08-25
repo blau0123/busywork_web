@@ -41,12 +41,13 @@ and upcoming events so that the user can quickly get a feel for his/her upcoming
 */
 class Dashboard extends React.Component{
     render(){
-        // sort notelist by time last updated
+        /* sort notelist by time last updated
         if (this.props.noteList){
             this.props.noteList.sort((note1, note2) => {
                 return (note1.lastUpdated.seconds > note2.lastUpdated.seconds) ? -1 : 1
             })
         }
+        */
 
         // sort eventlist by closest starttime to now
         return(
@@ -91,7 +92,7 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
-    console.log(storeState);
+    console.log(storeState.firebase.auth.uid);
     return({
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,
@@ -100,7 +101,7 @@ const mapStateToProps = (storeState) => {
     });
 }
 
-export default compose(firestoreConnect([{collection:'notes'}, 
+export default compose(firestoreConnect([{collection:'notes', orderBy:['lastUpdated','desc']}, 
                                          {collection:'todos'},
-                                         {collection:'events'}]), 
+                                         {collection:'events', orderBy:['startTime', 'asc']}]), 
     connect(mapStateToProps))(Dashboard);
