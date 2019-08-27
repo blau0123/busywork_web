@@ -9,11 +9,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 import EventSummary from './EventSummary'
+import GridCalendarTitle from '../dashboard/GridCalendarTitle';
 
 // styles for each grid item (notes, todos, events)
 const grid_items_styles = {
     background: '#F9F9F9',
     height: '100vh',
+    overflowY:'scroll',
 }
 
 /*
@@ -28,7 +30,7 @@ class EventList extends React.Component{
                 <div className="container">
                     <Card style={grid_items_styles}>
                         <CardContent>
-                            <h3 style={{paddingLeft:'25px'}}>Your Upcoming Events</h3>
+                            <GridCalendarTitle />
                             <List className="list-container" aria-label="previews">
                                 {
                                     eventList && eventList.map(event => {
@@ -56,5 +58,5 @@ const mapStateToProps = (storeState) => {
     });
 }
 
-export default compose(firestoreConnect([{collection:'events'}]), 
+export default compose(firestoreConnect([{collection:'events', orderBy:['startTime','asc']}]), 
     connect(mapStateToProps))(EventList);

@@ -27,14 +27,6 @@ const note_grid_styles = {
     overflow: 'auto',
 }
 
-// styles for titles of dashboard items
-const title_styles = {
-    flexGrow: 1,
-    textDecoration: 'none',
-    color: 'black',
-    fontSize: '24px',
-}
-
 /*
 Main/home component that displays list summaries of most important notes and todos,
 and upcoming events so that the user can quickly get a feel for his/her upcoming week

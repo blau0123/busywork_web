@@ -46,9 +46,12 @@ class AddNote extends React.Component{
         evt.preventDefault();
         // state holds info for the note wanted to add, so pass it in to action creator
         this.props.addNote(this.state);
+        // after add note in action creator, take user back a page with router's history obj
+        this.props.history.goBack();
     }
 
     render(){
+        console.log(this.props);
         return(
             <div className="bg-container">
                 <div style={{margin: '5vh 20vw'}} className="container">

@@ -44,6 +44,8 @@ class AddTodo extends React.Component{
     handleSubmit = (evt) => {
         evt.preventDefault();
         this.props.addTodo(this.state);
+        // go back to previous page using router's history obj
+        this.props.history.goBack();
     }
 
     render(){

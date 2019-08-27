@@ -10,6 +10,7 @@ Component that allows user to sign in with username and password
 stored in firebase firestore database (done in AddEventForm)
 */
 class AddEvent extends React.Component{
+    // history object can't be accessed in nested components, so pass to child as prop
     render(){
         return(
             <div className="bg-container">
@@ -18,7 +19,7 @@ class AddEvent extends React.Component{
                         <CardContent>
                             <div style={{padding: '40px', fontFamily:'Playfair Display, serif'}} className="signin-container">
                                 <h3>New Event</h3>
-                                <AddEventForm />
+                                <AddEventForm history={this.props.history}/>
                             </div>
                         </CardContent>
                     </Card>

@@ -51,5 +51,5 @@ const mapStateToProps = (storeState) => {
     });
 }
 
-export default compose(firestoreConnect([{collection:'notes'}]),
+export default compose(firestoreConnect([{collection:'notes', orderBy:['lastUpdated','desc']}]),
     connect(mapStateToProps))(NotesList);

@@ -51,6 +51,8 @@ class AddEventForm extends React.Component{
         evt.preventDefault();
         // state holds info for the note wanted to add, so pass it in to action creator
         this.props.addEvent(this.state);
+        // after add event, go back to previous page with router's history obj
+        this.props.history.goBack();
     }
 
     /*
@@ -71,6 +73,7 @@ class AddEventForm extends React.Component{
     }
 
     render(){
+        console.log(this.props);
         return(
             <form className="form-container">
                 <FormControl fullWidth>
