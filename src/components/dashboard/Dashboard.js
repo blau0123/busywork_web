@@ -27,27 +27,39 @@ const note_grid_styles = {
     overflow: 'auto',
 }
 
+const welcome_styles = {
+    fontFamily:'Playfair Display, serif',
+    fontSize:'25px',
+    left:'10vw',
+}
+
 /*
 Main/home component that displays list summaries of most important notes and todos,
 and upcoming events so that the user can quickly get a feel for his/her upcoming week
 */
 class Dashboard extends React.Component{
-    render(){
-        /* sort notelist by time last updated
-        if (this.props.noteList){
-            this.props.noteList.sort((note1, note2) => {
-                return (note1.lastUpdated.seconds > note2.lastUpdated.seconds) ? -1 : 1
-            })
-        }
-        */
+    constructor(){
+        super();
+        this.getCurrentUser = this.getCurrentUser.bind(this);
+    }
 
-        // sort eventlist by closest starttime to now
+    getCurrentUser(user){
+        return user.id == this.props.auth.uid;
+    }
+
+    render(){
+        const user = this.props.usersList ? this.props.usersList.find(this.getCurrentUser) : null;
+        console.log(user);
         return(
             <div className="root" style={{margin: '25px'}}>
+                {user ? 
+                <h3 style={welcome_styles}>{
+                    "Welcome back, " + user.firstName + " " + user.lastName}
+                </h3> : null}
                 <Grid container justify='flex-start' direction='row' spacing={3} 
                 alignItems='stretch' wrap='wrap'>
                     {/* notes grid item */}
-                    <Grid item className="notes-item" sm={12} md={7} style={{margin: '10px'}}>
+                    <Grid item className="notes-item" sm={12} md={7} style={{margin: '0 10px'}}>
                         <GridNoteTitle />
                         <Card style={note_grid_styles}>
                             <CardContent>
@@ -84,16 +96,19 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
-    console.log(storeState.firebase.auth.uid);
+    console.log(storeState.firestore);
     return({
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,
         todoList: storeState.firestore.ordered.todos,
         eventList: storeState.firestore.ordered.events,
+        usersList: storeState.firestore.ordered.users,
+        auth: storeState.firebase.auth,
     });
 }
 
 export default compose(firestoreConnect([{collection:'notes', orderBy:['lastUpdated','desc']}, 
                                          {collection:'todos'},
-                                         {collection:'events', orderBy:['startTime', 'asc']}]), 
+                                         {collection:'events', orderBy:['startTime', 'asc']},
+                                         {collection:'users'},]), 
     connect(mapStateToProps))(Dashboard);
