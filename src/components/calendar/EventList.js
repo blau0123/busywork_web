@@ -18,6 +18,15 @@ const grid_items_styles = {
     overflowY:'scroll',
 }
 
+const eventlist_title_styles = {
+    overflow:'hidden',
+    display:'inline-block',
+    width:'100%',
+    borderBottom:'1px solid #000',
+    padding:'5px',
+    leftMargin:'5px',
+}
+
 /*
 In calendar component, this component is used to show the list
 of upcoming events
@@ -25,22 +34,47 @@ of upcoming events
 class EventList extends React.Component{
     render(){
         const eventList = this.props.eventList;
+        const currTime = new Date();
         return(
             <div className="bg-container">
                 <div className="container">
                     <Card style={grid_items_styles}>
                         <CardContent>
                             <GridCalendarTitle />
-                            <List className="list-container" aria-label="previews">
+                            <p style={eventlist_title_styles}>Upcoming Events!</p>
+                            <List className="future-event-container" aria-label="previews">
                                 {
                                     eventList && eventList.map(event => {
-                                    return(
-                                        <ListItem button key={event.id}>
-                                            {/* passing in each individual note to render that specific note as a
-                                            NoteSummary component */}
-                                            <EventSummary event={event} key={event.id} />
-                                        </ListItem>
-                                    )
+                                        // only show upcoming events in this list
+                                        const startTimeAsDate = new Date(event.startTime.seconds * 1000);
+                                        if (startTimeAsDate < currTime){
+                                            return null;
+                                        }
+                                        return(
+                                            <ListItem button key={event.id}>
+                                                {/* passing in each individual note to render that specific note as a
+                                                NoteSummary component */}
+                                                <EventSummary event={event} key={event.id} />
+                                            </ListItem>
+                                        )
+                                })}
+                            </List>
+                            <p style={eventlist_title_styles}>Past Events!</p>
+                            <List className="past-event-container" aria-label="previews">
+                                {
+                                    eventList && eventList.map(event => {
+                                        // only show past events in this list
+                                        const startTimeAsDate = new Date(event.startTime.seconds * 1000);
+                                        if (startTimeAsDate > currTime){
+                                            return null;
+                                        }
+                                        return(
+                                            <ListItem button key={event.id}>
+                                                {/* passing in each individual note to render that specific note as a
+                                                NoteSummary component */}
+                                                <EventSummary event={event} key={event.id} />
+                                            </ListItem>
+                                        )
                                 })}
                             </List>
                         </CardContent>

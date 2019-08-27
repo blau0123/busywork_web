@@ -12,7 +12,8 @@ Inside of dashboard, shows list of summaries of upcoming events
 class EventsPrev extends React.Component{
     render(){
         const eventList = this.props.eventList;
-
+        const currTime = new Date();
+        
         return(
             <div>
                 {
@@ -22,6 +23,11 @@ class EventsPrev extends React.Component{
                     eventList ?
                     <List aria-label="previews">
                     {eventList && eventList.map(event => {
+                        // only show upcoming events in this list
+                        const startTimeAsDate = new Date(event.startTime.seconds * 1000);
+                        if (startTimeAsDate < currTime){
+                            return null;
+                        }
                         return(
                             <ListItem button key={event.id}>
                                 <EventSummary event={event}/>

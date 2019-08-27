@@ -90,19 +90,43 @@ class SignUp extends React.Component{
                                         <TextField id='firstName'
                                             label="First Name" margin="normal" 
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <TextField id='lastName'
                                             label="Last Name" margin="normal" 
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <TextField id='email'
                                             label="Email" margin="normal" 
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <TextField id="password"
                                             label="Password" type="password" margin="normal" 
                                             style={{margin:'10px'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <Button variant='contained' className="submit-btn"
                                             onClick={this.handleSubmit}
                                             style={signup_btn_styles}>

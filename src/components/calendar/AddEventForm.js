@@ -18,6 +18,12 @@ const signin_btn_styles = {
     fontFamily:'Playfair Display, serif',
 }
 
+const time_err_styles = {
+    color: 'red',
+    fontSize: '18px',
+    textAlign: 'center',
+}
+
 const form_entry_styles = {
     margin:'10px',
     fontFamily:'Playfair Display, serif',
@@ -33,6 +39,7 @@ class AddEventForm extends React.Component{
             location:'',
             startTime: new Date(),
             endTime: new Date(),
+            timeError: false,
         }
     }
 
@@ -49,10 +56,25 @@ class AddEventForm extends React.Component{
     // handles when submit btn clicked
     handleSubmit = (evt) => {
         evt.preventDefault();
-        // state holds info for the note wanted to add, so pass it in to action creator
-        this.props.addEvent(this.state);
-        // after add event, go back to previous page with router's history obj
-        this.props.history.goBack();
+        // check that the startTime is BEFORE the endTime
+        if (this.state.startTime < this.state.endTime){
+            // state holds info for the note wanted to add, so pass it in to action creator
+            this.props.addEvent({
+                title: this.state.title,
+                description: this.state.description,
+                location: this.state.location,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+            });
+            // after add event, go back to previous page with router's history obj
+            this.props.history.goBack();
+        }
+        else{
+            console.log("The start time must be strictly less than the end time!");
+            this.setState({
+                ...this.state, timeError: !this.state.timeError,
+            })
+        }
     }
 
     /*
@@ -73,81 +95,86 @@ class AddEventForm extends React.Component{
     }
 
     render(){
-        console.log(this.props);
         return(
-            <form className="form-container">
-                <FormControl fullWidth>
-                    <TextField id='title'
-                        label="Title" margin="normal" 
-                        style={form_entry_styles}
-                        required="true"
-                        inputProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        InputLabelProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        onChange={this.handleChange}/>
-                    <TextField id="description"
-                        label="Description"
-                        margin="normal" 
-                        multiline='true'
-                        rows='20'
-                        style={form_entry_styles}
-                        inputProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        InputLabelProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        onChange={this.handleChange}/>
-                    <TextField id='location'
-                        label="Location" margin="normal" 
-                        style={form_entry_styles}
-                        inputProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        InputLabelProps={{
-                            style:{fontFamily:'Playfair Display, serif'}
-                        }}
-                        onChange={this.handleChange}/>
-                    {/* have user enter a date and time for the event */}
-                    <MuiPickersUtilsProvider
-                        className='date-picker'
-                        utils={DateFnsUtils}>
-                        <DateTimePicker
-                            id='startTime'
-                            label='Choose a start time'
-                            value={this.state.startTime}
-                            onChange={this.handleStartDateChange}
+            <div className="container">
+                <form className="form-container">
+                    <FormControl fullWidth>
+                        <TextField id='title'
+                            label="Title" margin="normal" 
+                            style={form_entry_styles}
+                            required="true"
                             inputProps={{
                                 style:{fontFamily:'Playfair Display, serif'}
                             }}
                             InputLabelProps={{
                                 style:{fontFamily:'Playfair Display, serif'}
                             }}
-                            style={form_entry_styles} />
-                        <DateTimePicker
-                            id='endTime'
-                            label='Choose an end time'
-                            value={this.state.endTime}
-                            onChange={this.handleEndDateChange} 
+                            onChange={this.handleChange}/>
+                        <TextField id="description"
+                            label="Description"
+                            margin="normal" 
+                            multiline='true'
+                            rows='20'
+                            style={form_entry_styles}
                             inputProps={{
                                 style:{fontFamily:'Playfair Display, serif'}
                             }}
                             InputLabelProps={{
                                 style:{fontFamily:'Playfair Display, serif'}
                             }}
-                            style={form_entry_styles}/>
-                    </MuiPickersUtilsProvider>
+                            onChange={this.handleChange}/>
+                        <TextField id='location'
+                            label="Location" margin="normal" 
+                            style={form_entry_styles}
+                            inputProps={{
+                                style:{fontFamily:'Playfair Display, serif'}
+                            }}
+                            InputLabelProps={{
+                                style:{fontFamily:'Playfair Display, serif'}
+                            }}
+                            onChange={this.handleChange}/>
+                        {/* have user enter a date and time for the event */}
+                        <MuiPickersUtilsProvider
+                            className='date-picker'
+                            utils={DateFnsUtils}>
+                            <DateTimePicker
+                                id='startTime'
+                                label='Choose a start time'
+                                value={this.state.startTime}
+                                onChange={this.handleStartDateChange}
+                                inputProps={{
+                                    style:{fontFamily:'Playfair Display, serif'}
+                                }}
+                                InputLabelProps={{
+                                    style:{fontFamily:'Playfair Display, serif'}
+                                }}
+                                style={form_entry_styles} />
+                            <DateTimePicker
+                                id='endTime'
+                                label='Choose an end time'
+                                value={this.state.endTime}
+                                onChange={this.handleEndDateChange} 
+                                inputProps={{
+                                    style:{fontFamily:'Playfair Display, serif'}
+                                }}
+                                InputLabelProps={{
+                                    style:{fontFamily:'Playfair Display, serif'}
+                                }}
+                                style={form_entry_styles}/>
+                        </MuiPickersUtilsProvider>
 
-                    <Button variant='contained' className="submit-btn"
-                        onClick={this.handleSubmit}
-                        style={signin_btn_styles}>
-                        Create Event
-                    </Button>
-                </FormControl>
-            </form>
+                        <Button variant='contained' className="submit-btn"
+                            onClick={this.handleSubmit}
+                            style={signin_btn_styles}>
+                            Create Event
+                        </Button>
+                    </FormControl>
+                </form>
+                {this.state.timeError ? 
+                <p style={time_err_styles}>
+                    Your start time must be earlier than your end time!
+                </p> : null}
+            </div>
         )
     }
 }

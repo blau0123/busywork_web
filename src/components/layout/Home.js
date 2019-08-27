@@ -22,6 +22,7 @@ const container_styles = {
     backgroundImage: 'url(' + Image + ')',
     backgroundPosition:'center',
     backgroundSize:'cover',
+    overflow:'hidden',
 }
 
 const list_item_styles = {

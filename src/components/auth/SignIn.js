@@ -92,11 +92,23 @@ class SignIn extends React.Component{
                                         <TextField id='email'
                                             label="Email" margin="normal" 
                                             style={{margin:'1vw'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <TextField id="password"
                                             label="Password" type="password" margin="normal" 
                                             style={{margin:'1vw'}}
-                                            onChange={this.handleChange}/>
+                                            onChange={this.handleChange}
+                                            inputProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}
+                                            InputLabelProps={{
+                                                style:{fontFamily:'Playfair Display, serif'}
+                                            }}/>
                                         <Button variant='contained' className="submit-btn"
                                             onClick={this.handleSubmit}
                                             style={signin_btn_styles}>
