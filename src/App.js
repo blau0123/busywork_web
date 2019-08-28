@@ -19,6 +19,7 @@ import AddTodo from './components/todos/AddTodo';
 import Calendar from './components/calendar/Calendar';
 import EventDetails from './components/calendar/EventDetails';
 import AddEvent from './components/calendar/AddEvent';
+import CalendarEventList from './components/calendar/CalendarEventList';
 
 class App extends React.Component{
   render(){
@@ -45,7 +46,7 @@ class App extends React.Component{
             <PrivateRoute exact path="/todos" component={TodoList} />
             <PrivateRoute path="/addtodo" component={AddTodo} />
 
-            <PrivateRoute path="/calendar" component={Calendar} />
+            <PrivateRoute path="/calendar" component={CalendarEventList} />
             <PrivateRoute path="/events/:id" component={EventDetails} />
             <PrivateRoute path="/addevent" component={AddEvent} />
           </Switch>
