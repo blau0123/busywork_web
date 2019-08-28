@@ -33,7 +33,7 @@ of upcoming events
 */
 class EventList extends React.Component{
     render(){
-        const eventList = this.props.eventList;
+        const userEventList = this.props.eventList ? this.props.eventList.filter(event => event.authorId === this.props.auth.uid) : null;
         const currTime = new Date();
         return(
             <div className="bg-container">
@@ -44,7 +44,7 @@ class EventList extends React.Component{
                             <p style={eventlist_title_styles}>Upcoming Events!</p>
                             <List className="future-event-container" aria-label="previews">
                                 {
-                                    eventList && eventList.map(event => {
+                                    userEventList && userEventList.map(event => {
                                         // only show upcoming events in this list
                                         const startTimeAsDate = new Date(event.startTime.seconds * 1000);
                                         if (startTimeAsDate < currTime){
@@ -62,7 +62,7 @@ class EventList extends React.Component{
                             <p style={eventlist_title_styles}>Past Events!</p>
                             <List className="past-event-container" aria-label="previews">
                                 {
-                                    eventList && eventList.map(event => {
+                                    userEventList && userEventList.map(event => {
                                         // only show past events in this list
                                         const startTimeAsDate = new Date(event.startTime.seconds * 1000);
                                         if (startTimeAsDate > currTime){
@@ -89,6 +89,7 @@ class EventList extends React.Component{
 const mapStateToProps = (storeState) => {
     return({
         eventList: storeState.firestore.ordered.events,
+        auth: storeState.firebase.auth,
     });
 }
 

@@ -17,7 +17,7 @@ the Dashboard
 */
 class NotesList extends React.Component{
     render(){
-        const noteList = this.props.noteList;
+        const userNoteList = this.props.noteList ? this.props.noteList.filter(note => note.authorId === this.props.auth.uid) : null;
         return(
             <div className="bg-container">
                 <div style={{margin: '5vh 20vw'}} className="container">
@@ -26,7 +26,7 @@ class NotesList extends React.Component{
                             <GridNoteTitle />
                             <List className="list-container" aria-label="previews">
                                 {
-                                    noteList && noteList.map(note => {
+                                    userNoteList && userNoteList.map(note => {
                                     return(
                                         <ListItem button key={note.id}>
                                             {/* passing in each individual note to render that specific note as a
@@ -48,6 +48,7 @@ class NotesList extends React.Component{
 const mapStateToProps = (storeState) => {
     return({
         noteList: storeState.firestore.ordered.notes,
+        auth: storeState.firebase.auth,
     });
 }
 

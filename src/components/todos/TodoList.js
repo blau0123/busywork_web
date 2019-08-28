@@ -23,7 +23,7 @@ const todolist_title_styles = {
 
 class TodoList extends React.Component{
     render(){
-        const todoList = this.props.todoList;
+        const userTodoList = this.props.todoList ? this.props.todoList.filter(todo => todo.authorId === this.props.auth.uid) : null;
         return(
             <div className="bg-container">
                 <div style={{margin: '5vh 20vw'}} className="container">
@@ -34,11 +34,11 @@ class TodoList extends React.Component{
                                 /* ternary to determine whether to show the list of noncompleted & completed todos
                                 or tell the user there are no todos
                                 */
-                                todoList ? 
+                                userTodoList ? 
                                     <div className="list-container">
                                         <p style={todolist_title_styles}>Get working on it!</p>
                                         <List aria-label="previews">
-                                            { todoList && todoList.map(todo => {
+                                            { userTodoList && userTodoList.map(todo => {
                                                 // if completed, don't show this todo in noncompleted list
                                                 if (todo.completed) return null;
 
@@ -51,7 +51,7 @@ class TodoList extends React.Component{
                                         </List>
                                         <p style={todolist_title_styles}>Completed!</p>
                                         <List aria-label="previews">
-                                            { todoList && todoList.map(todo => {
+                                            { userTodoList && userTodoList.map(todo => {
                                                 // if not completed, don't show in this completed list
                                                 if (!todo.completed) return null;
 
@@ -79,6 +79,7 @@ class TodoList extends React.Component{
 const mapStateToProps = (storeState) => {
     return({
         todoList: storeState.firestore.ordered.todos,
+        auth: storeState.firebase.auth,
     });
 }
 

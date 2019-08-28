@@ -44,12 +44,15 @@ class Dashboard extends React.Component{
     }
 
     getCurrentUser(user){
-        return user.id == this.props.auth.uid;
+        return user.id === this.props.auth.uid;
     }
 
     render(){
         const user = this.props.usersList ? this.props.usersList.find(this.getCurrentUser) : null;
-        console.log(user);
+        const userNoteList = this.props.noteList ? this.props.noteList.filter(note => note.authorId === this.props.auth.uid) : null;
+        const userTodoList = this.props.todoList ? this.props.todoList.filter(todo => todo.authorId === this.props.auth.uid) : null;
+        const userEventList = this.props.eventList ? this.props.eventList.filter(event => event.authorId === this.props.auth.uid) : null;
+
         return(
             <div className="root" style={{margin: '25px'}}>
                 {user ? 
@@ -63,7 +66,7 @@ class Dashboard extends React.Component{
                         <GridNoteTitle />
                         <Card style={note_grid_styles}>
                             <CardContent>
-                                <NotesPrev noteList={this.props.noteList} />
+                                <NotesPrev noteList={userNoteList} />
                             </CardContent>
                         </Card>
                     </Grid>
@@ -74,7 +77,7 @@ class Dashboard extends React.Component{
                             <GridTodoTitle />
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
-                                    <TodosPrev todoList={this.props.todoList}/>
+                                    <TodosPrev todoList={userTodoList}/>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -83,7 +86,7 @@ class Dashboard extends React.Component{
                             <GridCalendarTitle />
                             <Card style={todo_event_grid_styles}>
                                 <CardContent>
-                                    <EventsPrev eventList={this.props.eventList}/>
+                                    <EventsPrev eventList={userEventList}/>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -96,7 +99,6 @@ class Dashboard extends React.Component{
 
 // allow dashboard to access certain props from store
 const mapStateToProps = (storeState) => {
-    console.log(storeState.firestore);
     return({
         // grab data from firestore state prop
         noteList: storeState.firestore.ordered.notes,
