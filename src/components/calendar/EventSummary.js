@@ -49,7 +49,7 @@ class EventSummary extends React.Component{
                     <Card>
                         <CardContent>
                             <Button style={delete_styles} onClick={this.deleteEvent}>
-                                <Link to='/dashboard' style={list_item_styles}>X</Link>
+                                <Link style={list_item_styles}>X</Link>
                             </Button>
                             {/* holds text in each list item of event list */}
                             <div className="todo-content">

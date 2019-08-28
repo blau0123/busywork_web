@@ -50,7 +50,7 @@ class NoteSummary extends React.Component{
                     <Card style={{height: '250px'}}>
                         <CardContent style={{maxHeight:'70%', overflow:'hidden'}}>
                             <Button style={delete_styles} onClick={this.deleteNote}>
-                                <Link to='/dashboard' style={list_item_styles}>X</Link>
+                                <Link style={list_item_styles}>X</Link>
                             </Button>
                             {/* holds text in each list item of notes list */}
                             <div className="note-content">
