@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import {Spring} from 'react-spring/renderprops';
 
 import NoteSummary from './NoteSummary'
 import GridNoteTitle from '../dashboard/GridNoteTitle';
@@ -21,23 +22,30 @@ class NotesList extends React.Component{
         return(
             <div className="bg-container">
                 <div style={{margin: '5vh 20vw'}} className="container">
-                    <Card style={{background: '#F9F9F9'}}>
-                        <CardContent>
-                            <GridNoteTitle />
-                            <List className="list-container" aria-label="previews">
-                                {
-                                    userNoteList && userNoteList.map(note => {
-                                    return(
-                                        <ListItem button key={note.id}>
-                                            {/* passing in each individual note to render that specific note as a
-                                            NoteSummary component */}
-                                            <NoteSummary note={note} key={note.id} />
-                                        </ListItem>
-                                    )
-                                })}
-                            </List>
-                        </CardContent>
-                    </Card>
+                    <Spring from={{opacity:0}} to={{opacity:1}} config={{duration:500}}>
+                        {props => (
+                            <div style={props}>
+                                <Card style={{background: '#F9F9F9'}}>
+                                    <CardContent>
+                                        <GridNoteTitle />
+                                        <List className="list-container" aria-label="previews">
+                                            {
+                                                userNoteList && userNoteList.map(note => {
+                                                return(
+                                                    <ListItem button key={note.id}>
+                                                        {/* passing in each individual note to render that specific note as a
+                                                        NoteSummary component */}
+                                                        <NoteSummary note={note} key={note.id} />
+                                                    </ListItem>
+                                                )
+                                            })}
+                                        </List>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        )}
+                    </Spring>
+                    
                 </div>
             </div>
         )
