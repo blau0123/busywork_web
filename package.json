@@ -16,6 +16,7 @@
     "react-redux-firebase": "^2.1.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
+    "react-spring": "^8.0.27",
     "redux": "^4.0.4",
     "redux-firebase": "^0.3.3",
     "redux-firestore": "^0.5.7",

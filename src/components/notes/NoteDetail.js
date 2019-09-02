@@ -17,6 +17,7 @@ const submit_btn_styles = {
     padding: '10px',
     background: '#6E88C1',
     color: 'white',
+    fontFamily:'Playfair Display, serif',
 }
 
 /*
@@ -67,7 +68,8 @@ class NoteDetail extends React.Component{
         
         // update note's document in firebase
         this.props.updateNote(this.state);
-        
+        // go back to previous page after update note
+        this.props.history.goBack();
     }
 
     render(){
@@ -88,7 +90,13 @@ class NoteDetail extends React.Component{
                                                 label="Title" margin="normal" 
                                                 defaultValue={thisNote.title}
                                                 style={{margin:'10px'}}
-                                                onChange={this.handleChange}/>
+                                                onChange={this.handleChange}
+                                                inputProps={{
+                                                    style:{fontFamily:'Playfair Display, serif'}
+                                                }}
+                                                InputLabelProps={{
+                                                    style:{fontFamily:'Playfair Display, serif'}
+                                                }}/>
                                             <TextField id="body"
                                                 label="What's on your mind?"
                                                 margin="normal" 
@@ -96,7 +104,13 @@ class NoteDetail extends React.Component{
                                                 rows='20'
                                                 defaultValue={thisNote.body}
                                                 style={{margin:'10px'}}
-                                                onChange={this.handleChange}/>
+                                                onChange={this.handleChange}
+                                                inputProps={{
+                                                    style:{fontFamily:'Playfair Display, serif'}
+                                                }}
+                                                InputLabelProps={{
+                                                    style:{fontFamily:'Playfair Display, serif'}
+                                                }}/>
                                             <Button variant='contained' className="submit-btn"
                                                 onClick={this.handleSubmit}
                                                 style={submit_btn_styles}>

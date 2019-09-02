@@ -6,6 +6,7 @@ import {firestoreConnect} from 'react-redux-firebase';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import {Spring} from 'react-spring/renderprops';
 
 import NotesPrev from './NotesPrev';
 import TodosPrev from './TodosPrev';
@@ -31,6 +32,7 @@ const welcome_styles = {
     fontFamily:'Playfair Display, serif',
     fontSize:'25px',
     left:'10vw',
+    top:'5vh',
 }
 
 /*
@@ -56,39 +58,60 @@ class Dashboard extends React.Component{
         return(
             <div className="root" style={{margin: '25px'}}>
                 {user ? 
-                <h3 style={welcome_styles}>{
-                    "Welcome back, " + user.firstName + " " + user.lastName}
-                </h3> : null}
+                    <h3 style={welcome_styles}>{
+                        "Welcome back, " + user.firstName}
+                    </h3>: null}
                 <Grid container justify='flex-start' direction='row' spacing={3} 
                 alignItems='stretch' wrap='wrap'>
                     {/* notes grid item */}
                     <Grid item className="notes-item" sm={12} md={7} style={{margin: '0 10px'}}>
-                        <GridNoteTitle />
-                        <Card style={note_grid_styles}>
-                            <CardContent>
-                                <NotesPrev noteList={userNoteList} />
-                            </CardContent>
-                        </Card>
+                        <Spring from={{opacity: 0}} to={{opacity: 1}} 
+                            config={{duration: 500, delay:500}}>
+                            {props => (
+                                <div style={props}>
+                                    <GridNoteTitle />
+                                    <Card style={note_grid_styles}>
+                                        <CardContent>
+                                            <NotesPrev noteList={userNoteList} />
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            )}
+                        </Spring>
                     </Grid>
                     {/* imbedded grid to allow notes and todos/events to be side by side */}
                     <Grid container item direction='row' sm={12} md={5} spacing={3} justify='flex-end'>
                         {/* todo grid item */}
                         <Grid item className="todos-item" xs={12} style={{margin: '10px'}}>
-                            <GridTodoTitle />
-                            <Card style={todo_event_grid_styles}>
-                                <CardContent>
-                                    <TodosPrev todoList={userTodoList}/>
-                                </CardContent>
-                            </Card>
+                            <Spring from={{opacity: 0}} to={{opacity: 1}} 
+                                config={{duration: 500, delay:500}}>
+                                {props => (
+                                    <div style={props}>
+                                        <GridTodoTitle />
+                                        <Card style={todo_event_grid_styles}>
+                                            <CardContent>
+                                                <TodosPrev todoList={userTodoList}/>
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+                                )}
+                            </Spring>
                         </Grid>
                         {/* events grid item */}
                         <Grid item className="events-item" sm={12} md={12} style={{margin: '10px'}}>
-                            <GridCalendarTitle />
-                            <Card style={todo_event_grid_styles}>
-                                <CardContent>
-                                    <EventsPrev eventList={userEventList}/>
-                                </CardContent>
-                            </Card>
+                            <Spring from={{opacity: 0}} to={{opacity: 1}} 
+                                config={{duration: 500, delay:500}}>
+                                {props => (
+                                    <div style={props}>
+                                        <GridCalendarTitle />
+                                        <Card style={todo_event_grid_styles}>
+                                            <CardContent>
+                                                <EventsPrev eventList={userEventList}/>
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+                                )}
+                            </Spring>
                         </Grid>
                     </Grid>
                 </Grid>
