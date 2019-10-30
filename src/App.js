@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 import NavBar from './components/layout/NavBar';
 import SignIn from './components/auth/SignIn';
@@ -34,7 +35,7 @@ class App extends React.Component{
           
           {/* Show only one of dashboard, notes, todos, or calendars at a time */}
           <Switch>
-            <Route exact path="/" component={Home} />
+            <PublicRoute exact path="/" component={Home} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
