@@ -20,11 +20,7 @@ class TodoSummary extends React.Component{
     }
 
     handleComplete(evt){
-        // TODO: show check, change firestore completed field to true, move to bottom
-        /* using todo's id, change completed field of firestore doc to true 
-           evt.target.id is the id of the todo in firestore
-        */
-       console.log(this.props);
+        console.log(this.props);
         this.props.completeTodo(evt.target.id);
     }
 

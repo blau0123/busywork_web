@@ -14,6 +14,7 @@ class Calendar extends React.Component{
                 <Card>
                     <CardContent style={grid_items_styles}>
                         <h3>Calendar</h3>
+                        <h2>Coming soon...</h2>
                     </CardContent>
                 </Card>
             </div>
