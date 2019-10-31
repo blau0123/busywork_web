@@ -32,7 +32,7 @@ const NavBar = ({auth}) => {
     // determine if user is logged in or not if auth prop holds uid property 
     const linksToShow = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
 
-    // if user is logged in, show dashboard and if not, then show home screen
+    // if user is logged in, then clicking title will bring user to dashboard
     const dashboardOrHome = auth.uid ? 
     <Link className="title" to="/dashboard" style={title_styles}>
         <h2>BusyWork</h2>
